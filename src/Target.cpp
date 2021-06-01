@@ -1,6 +1,8 @@
 #include "../header/Target.h"
 
-
+Target::Target(){
+    SetTargetLocation(-1,-1);
+}
 void Target::SetHit(bool hit){
     targetHit = hit;
 }

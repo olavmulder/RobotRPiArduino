@@ -3,9 +3,10 @@
 
 #define TILE_SIZE 30 //tile size in cm
 
-#define CLOSED 0//value in map is tile is blocked
-#define OPEN 1//value in map is tile is opne
-#define TARGET 2
+#define UNKNOWN 0//value in map is tile is UNKNONW
+#define CLOSED 1
+#define OPEN 2//value in map is tile is opne
+#define TARGET 3
 #include <vector>
 #include "Target.h"
 #include "DistanceSensor.h"
@@ -21,10 +22,11 @@ class Map{
         DistanceSensor ds;
         int arrayDistanceValues[3];
         int locArr[2];
+        int amountTargets;
     public:
 
        
-        Map(Motor *motor,int amountTargets);
+        Map(Motor *motor,int amountTarget);
         //map
         int* GetMap();
         int* SetMap(DirNouse dir, int* addr, int*x, int* y);

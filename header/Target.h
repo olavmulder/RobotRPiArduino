@@ -15,6 +15,7 @@ class Target{
         bool targetHit;
         int locArr[2];
     public:
+        Target();
         void SetHit(bool Hit);
         bool GetHit();
         int* GetTargetLocation();

@@ -43,7 +43,7 @@ int main() {
     {0,0}//top left corner
   };
   int routeCounter=0;//counter reached locations f
-  Route route(0,0,finishCoordinates[0][0], finishCoordinates[0][1]);
+  Route route;
 
   DirNouse dirNouse = WEST;
 

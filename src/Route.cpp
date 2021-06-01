@@ -1,12 +1,5 @@
 #include "../header/Route.h"
-Route::Route(int a, int b, int c, int d){
-    //set coordinates for src & dest 
-    srcX = a;
-    srcY = b;
-    destX = c;
-    destY = d;
-    //set pointer to current map
-    
+Route::Route(){    
     //alloc routeArray;
     routeArray = (int*)malloc((WIDTH*HEIGHT+1)*sizeof(int));
 }
@@ -43,13 +36,22 @@ int Route::GetSize(){
 bool Route::isValid(int row, int col)
 { // Returns true if row number and column number is in
 // range
- return (row >= 0) && (row < ROW) && (col >= 0)
-           && (col < COL);
+ return (row >= 0) && (row < HEIGHT) && (col >= 0)
+           && (col < WIDTH);
+
 }
-bool Route::isUnBlocked(int grid[][COL], int row, int col)
+bool Route::isTarget(int grid[][WIDTH], int row, int col){
+     // Returns true if the cell is not blocked else false
+    if (grid[row][col] == TARGET)
+        return (true);
+    else
+        return (false);
+}
+
+bool Route::isUnBlocked(int grid[][WIDTH], int row, int col)
 {
     // Returns true if the cell is not blocked else false
-    if (grid[row][col] == 1)
+    if (grid[row][col] == UNKNOWN || grid[row][col] == OPEN)
         return (true);
     else
         return (false);
@@ -71,7 +73,7 @@ double Route::calculateHValue(int row, int col, Pair dest)
         + (col - dest.second) * (col - dest.second)));
 }
 
-void Route::tracePath(cell cellDetails[][COL], Pair dest)
+void Route::tracePath(cell cellDetails[][WIDTH], Pair dest)
 {
     
     int row = dest.first;
@@ -100,7 +102,7 @@ void Route::tracePath(cell cellDetails[][COL], Pair dest)
     }
     return;
 }
-void Route::aStarSearch(int grid[][COL], Pair src, Pair dest)
+void Route::aStarSearch(int grid[][HEIGHT], Pair src, Pair dest)
 {
     // If the source is out of range
     if (isValid(src.first, src.second) == false) {
@@ -138,17 +140,17 @@ void Route::aStarSearch(int grid[][COL], Pair src, Pair dest)
     // Create a closed list and initialise it to false which
     // means that no cell has been included yet This closed
     // list is implemented as a boolean 2D array
-    bool closedList[ROW][COL];
+    bool closedList[WIDTH][HEIGHT];
     memset(closedList, false, sizeof(closedList));
  
     // Declare a 2D array of structure to hold the details
     // of that cell
-    cell cellDetails[ROW][COL];
+    cell cellDetails[HEIGHT][WIDTH];
  
     int i, j;
  
-    for (i = 0; i < ROW; i++) {
-        for (j = 0; j < COL; j++) {
+    for (i = 0; i < HEIGHT; i++) {
+        for (j = 0; j < WIDTH; j++) {
             cellDetails[i][j].f = FLT_MAX;
             cellDetails[i][j].g = FLT_MAX;
             cellDetails[i][j].h = FLT_MAX;

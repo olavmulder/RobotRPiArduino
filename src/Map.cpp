@@ -1,14 +1,14 @@
 #include "../header/Map.h"
 
-Map::Map(Motor *mot, int amountTargets){
+Map::Map(Motor *mot, int amountTarget){
     motor = mot;
     map = (int*)calloc(HEIGHT*WIDTH, sizeof(int));
     for(uint8_t i=0;i< HEIGHT;i++){
         for(uint8_t j=0;j< WIDTH;j++){
-            *(map+(i*WIDTH)+j) = OPEN;
+            *(map+(i*WIDTH)+j) = UNKNOWN;
         }
     }
-
+    amountTargets = amountTarget;
     target.resize(amountTargets);
 }
 int* Map::GetTargetLocation(int id){
@@ -29,6 +29,14 @@ int* Map::GetDistanceArray(){
     return ds.GetDistance();
 }
 int* Map::SetMap(DirNouse dir, int* addrDistance, int *x,int *y){
+    //set targets in map
+    for(int i=0;i<amountTargets;i++){
+        if(*GetTargetLocation(i) != -1){
+            int *x = GetTargetLocation(i);
+            int *y = x+1;
+            *(map+(*y*WIDTH)+*x) = TARGET;
+        }
+    }
     //get all three distance values
     for(uint8_t i=0;i<3;i++){
         arrayDistanceValues[i] = *(addrDistance+i);

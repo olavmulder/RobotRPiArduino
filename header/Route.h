@@ -5,8 +5,7 @@
 
 #include <bits/stdc++.h>
 #include <utility>
-#define ROW 5
-#define COL 5
+
 using namespace std;
 // Creating a shortcut for int, int pair type
 typedef pair<int, int> Pair;
@@ -28,19 +27,19 @@ class Route{
         int *routeArray;
         Location finishLocation;
         int sizeOfPath;
-        int grid[ROW][COL];
+        int grid[HEIGHT][WIDTH];
         int srcX, srcY, destX, destY;
         //function of A*
-        
+        bool isTarget(int grid[][WIDTH], int row, int col);
         bool isValid(int row, int col);
-        bool isUnBlocked(int grid[][COL], int row, int col);
+        bool isUnBlocked(int grid[][WIDTH], int row, int col);
         bool isDestination(int row, int col, Pair dest);
         double calculateHValue(int row, int col, Pair dest);
-        void tracePath(cell cellDetails[][COL], Pair dest);
-        void aStarSearch(int grid[][COL], Pair src, Pair dest);
+        void tracePath(cell cellDetails[][WIDTH], Pair dest);
+        void aStarSearch(int grid[][WIDTH], Pair src, Pair dest);
         
     public:
-        Route(int a, int b, int c, int d);
+        Route();
         int* GetRoute();
         void SetRoute(int* map, int, int ,int,int);
         int GetSize();
