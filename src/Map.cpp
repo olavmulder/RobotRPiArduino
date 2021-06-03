@@ -28,6 +28,7 @@ int* Map::GetDistanceArray(){
     ds.ReadDistanceValue();
     return ds.GetDistance();
 }
+
 int* Map::SetMap(DirNouse dir, int* addrDistance, int *x,int *y){
     //set targets in map
     for(int i=0;i<amountTargets;i++){

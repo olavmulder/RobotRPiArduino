@@ -18,7 +18,7 @@ void Motor::CalculateCurrentLocation(DirNouse dir, int* distanceArr){
     std::cout << "newX, newY: " << +newX<< +newY << std::endl;
     std::cout << "Dir is: " << dir << std::endl;
     if(dir == NORTH){
-        if(*(distanceArr+1) < TILE_SIZE-5 || newY ==  0){//tile size
+        if(*(distanceArr+1) < TILE_SIZE-5 || newY ==  0){
             Drive(RIGHT90);
             direction = WEST;
             
@@ -85,10 +85,12 @@ void Motor::CalculateCurrentLocationWithRoute(int *array, int size){
             |                                         |
             -------------------------------------------
         */
+
         if(newX > oldX){//robot RIGHT90
             if(direction == NORTH){
                 Drive(RIGHT90);
                 Drive(FORWARD);
+                
             }
             if(direction == EAST){
                 Drive(FORWARD);
@@ -98,13 +100,16 @@ void Motor::CalculateCurrentLocationWithRoute(int *array, int size){
                 Drive(FORWARD);
             }
             if(direction == WEST){
-                Drive(BACK);
+                Drive(TURN360);
+                Drive(FORWARD);
             }
             direction = EAST;
+            
         }
         if(newY > oldY){//robot down
             if(direction == NORTH){
-                Drive(BACK);
+                Drive(TURN360);
+                Drive(FORWARD);
             }
             if(direction == EAST){
                 Drive(RIGHT90);
@@ -120,13 +125,14 @@ void Motor::CalculateCurrentLocationWithRoute(int *array, int size){
             direction = SOUTH;
 
         }
-        if(newX < oldX){//robot LEFT90
+        if(newX < oldX){//robot LEFT
             if(direction == NORTH){
                 Drive(LEFT90);
                 Drive(FORWARD);
             }
             if(direction == EAST){
-                Drive(BACK);              
+                Drive(TURN360);  
+                Drive(FORWARD);            
             }
             if(direction == SOUTH){
                 Drive(RIGHT90);

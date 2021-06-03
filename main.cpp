@@ -6,6 +6,8 @@
 #include <iostream>
 #include <fstream>
 
+//#define MANUAL
+#define AUTOMATIC
 
 #define AMOUNT_LOCATIONS 4
 /*
@@ -77,7 +79,7 @@ int main() {
     std::cout << "dirNouse: " << dirNouse << std::endl;
     distanceSensorArray = map.GetDistanceArray();
     //std::cout << "read:: " << +i2c.ReadBytes() << std::endl;
-    //motor.CalculateCurrentLocation(dirNouse, distanceArr);
+    //
     
     //update map
     curLocationX = motor.GetCurrentLocation();
@@ -107,17 +109,21 @@ int main() {
     }
     route.PrintRoute();
     //set manual location:
-    int x,y, ownDir;
-    std::cout << "\nType x:";
-    std::cin >> x;
-    std::cout << "\nType y: ";
-    std::cin >> y;
-    std::cout << "\nType direction: ";
-    std::cin >> ownDir;
-    motor.SetCurrentLocation(x,y);
-    motor.SetCurrentDirection((DirNouse)ownDir);
-    sleep(2);
-
+    #ifdef MANUAL
+      int x,y, ownDir;
+      std::cout << "\nType x:";
+      std::cin >> x;
+      std::cout << "\nType y: ";
+      std::cin >> y;
+      std::cout << "\nType direction: ";
+      std::cin >> ownDir;
+      motor.SetCurrentLocation(x,y);
+      motor.SetCurrentDirection((DirNouse)ownDir);
+      sleep(2);
+    #endif
+    #ifdef AUTOMATIC
+      motor.CalculateCurrentLocationWithRoute( route.GetRoute(), route.GetSize());
+    #endif
     //turn 360 after three tiles
     if(turnCounter--==0){
       motor.Drive(TURN360);
