@@ -8,13 +8,15 @@
 #include <iostream>
 #include <wiringPiI2C.h>
 class I2C{
+    private:
+        int file;
+        int data;
     public:
         void CloseBus();
         bool OpenBus();
         int ReadBytes();
         bool WriteBytes(unsigned char);
-        int file;
-        int data;
+        
         
 };
    

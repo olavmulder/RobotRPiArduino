@@ -10,11 +10,12 @@ void Route::PrintRoute(){
         i++;
         std::cout << "," << *(routeArray+i)<< ") ->";
     }
+    std::cout << std::endl;
 }
 int* Route::GetRoute(){
     return routeArray;
 }
-void Route::SetRoute(int* map, int sX, int sY,int dX, int dY ){
+char Route::SetRoute(int* map, int sX, int sY,int dX, int dY ){
     //set map in grid variable;
     for(int i = 0;i<HEIGHT;i++){
         for(int j = 0;j<WIDTH;j++){
@@ -25,7 +26,11 @@ void Route::SetRoute(int* map, int sX, int sY,int dX, int dY ){
     Pair src = make_pair(sX, sY);
     Pair dest = make_pair(dX,dY);
     //start algoritme
-    aStarSearch(grid,src,dest);
+    if(aStarSearch(grid,src,dest)== 0){
+        std::cout << "-1 for aStarSearch" << std::endl;
+        return 0;
+    }
+    else return 1;
 }
 int Route::GetSize(){
     return sizeOfPath;
@@ -102,18 +107,18 @@ void Route::tracePath(cell cellDetails[][WIDTH], Pair dest)
     }
     return;
 }
-void Route::aStarSearch(int grid[][HEIGHT], Pair src, Pair dest)
+char Route::aStarSearch(int grid[][HEIGHT], Pair src, Pair dest)
 {
     // If the source is out of range
     if (isValid(src.first, src.second) == false) {
         printf("Source is invalid\n");
-        return;
+        return 0;
     }
  
     // If the destination is out of range
     if (isValid(dest.first, dest.second) == false) {
         printf("Destination is invalid\n");
-        return;
+        return 0;
     }
  
     // Either the source or the destination is blocked
@@ -134,7 +139,7 @@ void Route::aStarSearch(int grid[][HEIGHT], Pair src, Pair dest)
     if (isDestination(src.first, src.second, dest)
         == true) {
         printf("We are already at the destination\n");
-        return;
+        return 0;
     }
  
     // Create a closed list and initialise it to false which
@@ -235,7 +240,7 @@ void Route::aStarSearch(int grid[][HEIGHT], Pair src, Pair dest)
                 printf("The destination cell is found\n");
                 tracePath(cellDetails, dest);
                 foundDest = true;
-                return;
+                return 1;
             }
             // If the successor is already on the closed
             // list or if it is blocked, then ignore it.
@@ -283,7 +288,7 @@ void Route::aStarSearch(int grid[][HEIGHT], Pair src, Pair dest)
                 printf("The destination cell is found\n");
                 tracePath(cellDetails, dest);
                 foundDest = true;
-                return;
+                return 1;
             }
             // If the successor is already on the closed
             // list or if it is blocked, then ignore it.
@@ -330,7 +335,7 @@ void Route::aStarSearch(int grid[][HEIGHT], Pair src, Pair dest)
                 printf("The destination cell is found\n");
                 tracePath(cellDetails, dest);
                 foundDest = true;
-                return;
+                return 1;
             }
  
             // If the successor is already on the closed
@@ -379,7 +384,7 @@ void Route::aStarSearch(int grid[][HEIGHT], Pair src, Pair dest)
                 printf("The destination cell is found\n");
                 tracePath(cellDetails, dest);
                 foundDest = true;
-                return;
+                return 1;
             }
  
             // If the successor is already on the closed
@@ -621,8 +626,8 @@ void Route::aStarSearch(int grid[][HEIGHT], Pair src, Pair dest)
     // reach the destination cell. This may happen when the
     // there is no way to destination cell (due to
     // blockages)
-    if (foundDest == false)
+    if (foundDest == false){
         printf("Failed to find the Destination Cell\n");
- 
-    return;
+        return 0;
+    }
 }

@@ -36,12 +36,12 @@ class Route{
         bool isDestination(int row, int col, Pair dest);
         double calculateHValue(int row, int col, Pair dest);
         void tracePath(cell cellDetails[][WIDTH], Pair dest);
-        void aStarSearch(int grid[][WIDTH], Pair src, Pair dest);
+        char aStarSearch(int grid[][WIDTH], Pair src, Pair dest);
         
     public:
         Route();
         int* GetRoute();
-        void SetRoute(int* map, int, int ,int,int);
+        char SetRoute(int* map, int, int ,int,int);
         int GetSize();
         void PrintRoute();
         

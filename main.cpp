@@ -24,6 +24,10 @@ using namespace std;
 #define DEVICE_ID 0x08
 #define MAX_RES_WIDTH 640
 #define MAX_RES_HEIGHT 320
+
+typedef enum{
+
+};
 Mat src_gray;
 Mat img;
 int thresh = 100;
@@ -121,7 +125,7 @@ int openCV(){
 void pathfinding(){
   Motor motor;
   Map map(&motor,AMOUNT_LOCATIONS);
-
+  Route route;
   //variable to count down for a 360 turn
   unsigned char turnCounter=2;
   //start x, start y, dest x, dest y; 
@@ -132,8 +136,6 @@ void pathfinding(){
     {0,0}//top left corner
   };
   int routeCounter=0;//counter reached locations f
-  Route route;
-
   DirNouse dirNouse = WEST;
 
   //init maps
@@ -143,11 +145,10 @@ void pathfinding(){
   //current location
   int *curLocationX = motor.GetCurrentLocation();
   int *curLocationY = curLocationX+1;
-
-  //update distance sensor
-  int *distanceSensorArray = map.GetDistanceArray();
+  //int distance sensor
+  int *distanceSensorArray = NULL;
   //set map
-  map.SetMap(dirNouse, distanceSensorArray, curLocationX, curLocationY);
+  /*map.SetMap(dirNouse, distanceSensorArray, curLocationX, curLocationY);
   ptrMap = map.GetMap();
   for(int i =0;i<HEIGHT;i++){
     for(int j=0;j<WIDTH;j++){
@@ -157,7 +158,7 @@ void pathfinding(){
   //calculate route
   route.SetRoute(&mapNew[0][0], 0,0, finishCoordinates[0][0], finishCoordinates[0][1]);
   //print routeArray;
-  route.PrintRoute();
+  route.PrintRoute();*/
 
   
   while(1){
@@ -165,8 +166,6 @@ void pathfinding(){
     dirNouse = motor.GetCurrentDirection();
     std::cout << "dirNouse: " << dirNouse << std::endl;
     distanceSensorArray = map.GetDistanceArray();
-    //std::cout << "read:: " << +i2c.ReadBytes() << std::endl;
-    //
     
     //update map
     curLocationX = motor.GetCurrentLocation();
@@ -189,8 +188,10 @@ void pathfinding(){
         }
       }
 
-      route.SetRoute(&mapOld[0][0], *curLocationX, *curLocationY, 
-                    finishCoordinates[routeCounter][0], finishCoordinates[routeCounter][1]);
+      if(route.SetRoute(&mapOld[0][0], *curLocationX, *curLocationY, 
+        finishCoordinates[routeCounter][0], finishCoordinates[routeCounter][1]) == 0){
+        exit(0);
+      }
     }else{
       std::cout << "same route" << std::endl;
     }

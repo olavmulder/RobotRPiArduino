@@ -10,6 +10,7 @@ Motor::Motor(){
 void Motor::Drive(DirDrive dir){
     i2c.OpenBus();
     i2c.WriteBytes(dir);
+    while(i2c.ReadBytes() != 1)std::cout<<"waiting for arduino, he's busy" << std::endl;
     i2c.CloseBus();
 }
 void Motor::CalculateCurrentLocation(DirNouse dir, int* distanceArr){

@@ -3,10 +3,6 @@
     typedef enum {
         green, blue, red
     }TargetID;
-    
-    typedef enum{
-        ONE, TWO, THREE
-    }State;
 
     typedef enum{
         LEFT90 = 3, RIGHT90, LEFT , RIGHT, FORWARD, STOP, BACK, TURN360
