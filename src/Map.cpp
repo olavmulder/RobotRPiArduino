@@ -10,26 +10,27 @@ Map::Map(Motor *mot, int amountTarget){
     }
     amountTargets = amountTarget;
     target.resize(amountTargets);
+    ds.resize(3);
 }
 int* Map::GetTargetLocation(int id){
-  int* x = target.at(id).GetTargetLocation();
-  int *y = x+1;
-  locArr[0] = *x;
-  locArr[1] = *y;
-  return &locArr[0];
+  return target.at(id).GetTargetLocation();
 }
 bool Map::GetTargetHit(int id){
     return target.at(id).GetHit();
 }
-void Map::CalculateTargetLocation(int id, int x, int y, DirNouse dir, int distance){
-    target.at(id).CalculateTargetLocation(x,y,dir,distance,TILE_SIZE);
+void Map::CalculateTargetLocation(int id, int x, int y, DirNouse dir){
+
+    target.at(id).CalculateTargetLocation(x,y,dir,arrayDistanceValues[1],TILE_SIZE);
 }
-int* Map::GetDistanceArray(){
-    ds.ReadDistanceValue();
-    return ds.GetDistance();
+void Map::SetDistanceArray(){
+    for(uint8_t i=0;i<3;i++){
+        ds.at(i).ReadDistanceValue(i);
+        arrayDistanceValues[i]  = ds.at(i).GetDistance();
+    }
+    
 }
 
-int* Map::SetMap(DirNouse dir, int* addrDistance, int *x,int *y){
+void Map::SetMap(){
     //set targets in map
     for(int i=0;i<amountTargets;i++){
         if(*GetTargetLocation(i) != -1){
@@ -38,12 +39,17 @@ int* Map::SetMap(DirNouse dir, int* addrDistance, int *x,int *y){
             *(map+(*y*WIDTH)+*x) = TARGET;
         }
     }
-    //get all three distance values
-    for(uint8_t i=0;i<3;i++){
-        arrayDistanceValues[i] = *(addrDistance+i);
-    }
+    //Set all three distance values
+    SetDistanceArray();
+    //get current x & y 
+    int *x = motor->GetCurrentLocation();
+    int *y = x+1;
+    //get current direction
+    DirNouse dir = motor->GetCurrentDirection();
+    std::cout << "dirNouse: " << dir << std::endl;
+
+
     //convert ds distance to amount of tiles;
-    
     int tileDistanceA=1, tileDistanceB=1, tileDistanceC=1;//three var to store amount tiles to block 
     bool state= true;
     while(state){
@@ -62,19 +68,11 @@ int* Map::SetMap(DirNouse dir, int* addrDistance, int *x,int *y){
         else state = false;
     }
    
-    //get current location 
 
-    
     int numberInMap = *x+(*y * WIDTH);
     std::cout << "cur x: " << *x << " cur y: "<< *y<<std::endl;
     std::cout << "number is map :" << numberInMap << std::endl;
 
-    //determine which ds is map location
-
-    //TODO dynamic field = update map = ,
-    //tiles between cur pos & block = OPEn
-
-    //place value in map
     int i = 1;
     printf("tileA:%d, tileB:%d, tileC:%d\n", tileDistanceA, tileDistanceB, tileDistanceC);
     if(dir == NORTH){//0= west, 1 = north, 2 = east
@@ -202,30 +200,13 @@ int* Map::SetMap(DirNouse dir, int* addrDistance, int *x,int *y){
             i++;
         }
     }
-    //place map in map.txt for debug
-    std::ofstream myfile;
-    /*myfile.open ("../map.txt");
-    if(myfile.is_open()){
-        for(uint8_t i=0;i< HEIGHT;i++){
-            for(uint8_t j=0;j< WIDTH;j++){
-                myfile << *(map+(i*WIDTH)+j);
-                //myfile << " ";
-            }
-            myfile << "\n";
-        }        
-    }
-    myfile.close();*/
-    *map = OPEN;
+    *map = OPEN;//begin in open
     for(uint8_t i=0;i< HEIGHT;i++){
-            for(uint8_t j=0;j< WIDTH;j++){
-                std::cout << *(map+(i*WIDTH)+j);
-                //myfile << " ";
-            }
-            std::cout << "\n";
+        for(uint8_t j=0;j< WIDTH;j++){
+            std::cout << *(map+(i*WIDTH)+j);
+        }
+        std::cout << "\n";
     }        
-    
-    return &arrayDistanceValues[0];
-
 } 
 int* Map::GetMap(){
     return &map[0];

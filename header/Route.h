@@ -1,8 +1,8 @@
 #ifndef ROUTE_H
 #define ROUTE_H
-#include "Map.h"
 #include "Location.h"
-
+#include "enumVar.h"
+#include "Map.h"
 #include <bits/stdc++.h>
 #include <utility>
 

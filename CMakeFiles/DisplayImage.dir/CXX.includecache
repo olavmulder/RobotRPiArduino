@@ -6,17 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/home/pi/RobotRPiArduino-master/header/DataCamera.h
+/home/pi/oldversion/RobotRPiArduino/header/DataCamera.h
 enumVar.h
-/home/pi/RobotRPiArduino-master/header/enumVar.h
+/home/pi/oldversion/RobotRPiArduino/header/enumVar.h
 
-/home/pi/RobotRPiArduino-master/header/DistanceSensor.h
+/home/pi/oldversion/RobotRPiArduino/header/DistanceSensor.h
 enumVar.h
-/home/pi/RobotRPiArduino-master/header/enumVar.h
+/home/pi/oldversion/RobotRPiArduino/header/enumVar.h
 I2c.h
-/home/pi/RobotRPiArduino-master/header/I2c.h
+/home/pi/oldversion/RobotRPiArduino/header/I2c.h
 
-/home/pi/RobotRPiArduino-master/header/I2c.h
+/home/pi/oldversion/RobotRPiArduino/header/I2c.h
 unistd.h
 -
 fcntl.h
@@ -29,18 +29,20 @@ iostream
 -
 wiringPiI2C.h
 -
+wiringPi.h
+-
 
-/home/pi/RobotRPiArduino-master/header/Location.h
+/home/pi/oldversion/RobotRPiArduino/header/Location.h
 
-/home/pi/RobotRPiArduino-master/header/Map.h
+/home/pi/oldversion/RobotRPiArduino/header/Map.h
 vector
 -
 Target.h
-/home/pi/RobotRPiArduino-master/header/Target.h
+/home/pi/oldversion/RobotRPiArduino/header/Target.h
 DistanceSensor.h
-/home/pi/RobotRPiArduino-master/header/DistanceSensor.h
+/home/pi/oldversion/RobotRPiArduino/header/DistanceSensor.h
 Motor.h
-/home/pi/RobotRPiArduino-master/header/Motor.h
+/home/pi/oldversion/RobotRPiArduino/header/Motor.h
 stdint.h
 -
 iostream
@@ -48,35 +50,37 @@ iostream
 fstream
 -
 
-/home/pi/RobotRPiArduino-master/header/Motor.h
+/home/pi/oldversion/RobotRPiArduino/header/Motor.h
 I2c.h
-/home/pi/RobotRPiArduino-master/header/I2c.h
+/home/pi/oldversion/RobotRPiArduino/header/I2c.h
 Location.h
-/home/pi/RobotRPiArduino-master/header/Location.h
+/home/pi/oldversion/RobotRPiArduino/header/Location.h
 enumVar.h
-/home/pi/RobotRPiArduino-master/header/enumVar.h
+/home/pi/oldversion/RobotRPiArduino/header/enumVar.h
 iostream
 -
 
-/home/pi/RobotRPiArduino-master/header/Route.h
-Map.h
-/home/pi/RobotRPiArduino-master/header/Map.h
+/home/pi/oldversion/RobotRPiArduino/header/Route.h
 Location.h
-/home/pi/RobotRPiArduino-master/header/Location.h
+/home/pi/oldversion/RobotRPiArduino/header/Location.h
+enumVar.h
+/home/pi/oldversion/RobotRPiArduino/header/enumVar.h
+Map.h
+/home/pi/oldversion/RobotRPiArduino/header/Map.h
 bits/stdc++.h
 -
 utility
 -
 
-/home/pi/RobotRPiArduino-master/header/Target.h
+/home/pi/oldversion/RobotRPiArduino/header/Target.h
 Location.h
-/home/pi/RobotRPiArduino-master/header/Location.h
+/home/pi/oldversion/RobotRPiArduino/header/Location.h
 enumVar.h
-/home/pi/RobotRPiArduino-master/header/enumVar.h
+/home/pi/oldversion/RobotRPiArduino/header/enumVar.h
 DataCamera.h
-/home/pi/RobotRPiArduino-master/header/DataCamera.h
+/home/pi/oldversion/RobotRPiArduino/header/DataCamera.h
 I2c.h
-/home/pi/RobotRPiArduino-master/header/I2c.h
+/home/pi/oldversion/RobotRPiArduino/header/I2c.h
 math.h
 -
 stdbool.h
@@ -84,25 +88,25 @@ stdbool.h
 vector
 -
 
-/home/pi/RobotRPiArduino-master/header/enumVar.h
+/home/pi/oldversion/RobotRPiArduino/header/enumVar.h
 
-/home/pi/RobotRPiArduino-master/main.cpp
+/home/pi/oldversion/RobotRPiArduino/main.cpp
 header/Map.h
-/home/pi/RobotRPiArduino-master/header/Map.h
+/home/pi/oldversion/RobotRPiArduino/header/Map.h
 header/Route.h
-/home/pi/RobotRPiArduino-master/header/Route.h
+/home/pi/oldversion/RobotRPiArduino/header/Route.h
 header/Motor.h
-/home/pi/RobotRPiArduino-master/header/Motor.h
+/home/pi/oldversion/RobotRPiArduino/header/Motor.h
 header/I2c.h
-/home/pi/RobotRPiArduino-master/header/I2c.h
+/home/pi/oldversion/RobotRPiArduino/header/I2c.h
 header/enumVar.h
-/home/pi/RobotRPiArduino-master/header/enumVar.h
+/home/pi/oldversion/RobotRPiArduino/header/enumVar.h
 opencv2/imgcodecs.hpp
-/home/pi/RobotRPiArduino-master/opencv2/imgcodecs.hpp
+/home/pi/oldversion/RobotRPiArduino/opencv2/imgcodecs.hpp
 opencv2/highgui.hpp
-/home/pi/RobotRPiArduino-master/opencv2/highgui.hpp
+/home/pi/oldversion/RobotRPiArduino/opencv2/highgui.hpp
 opencv2/imgproc.hpp
-/home/pi/RobotRPiArduino-master/opencv2/imgproc.hpp
+/home/pi/oldversion/RobotRPiArduino/opencv2/imgproc.hpp
 wiringPiI2C.h
 -
 cmath
@@ -114,27 +118,27 @@ fstream
 thread
 -
 
-/home/pi/RobotRPiArduino-master/src/DistanceSensor.cpp
+/home/pi/oldversion/RobotRPiArduino/src/DistanceSensor.cpp
 ../header/DistanceSensor.h
-/home/pi/RobotRPiArduino-master/header/DistanceSensor.h
+/home/pi/oldversion/RobotRPiArduino/header/DistanceSensor.h
 
-/home/pi/RobotRPiArduino-master/src/I2C.cpp
+/home/pi/oldversion/RobotRPiArduino/src/I2C.cpp
 ../header/I2c.h
-/home/pi/RobotRPiArduino-master/header/I2c.h
+/home/pi/oldversion/RobotRPiArduino/header/I2c.h
 
-/home/pi/RobotRPiArduino-master/src/Map.cpp
+/home/pi/oldversion/RobotRPiArduino/src/Map.cpp
 ../header/Map.h
-/home/pi/RobotRPiArduino-master/header/Map.h
+/home/pi/oldversion/RobotRPiArduino/header/Map.h
 
-/home/pi/RobotRPiArduino-master/src/Motor.cpp
+/home/pi/oldversion/RobotRPiArduino/src/Motor.cpp
 ../header/Motor.h
-/home/pi/RobotRPiArduino-master/header/Motor.h
+/home/pi/oldversion/RobotRPiArduino/header/Motor.h
 
-/home/pi/RobotRPiArduino-master/src/Route.cpp
+/home/pi/oldversion/RobotRPiArduino/src/Route.cpp
 ../header/Route.h
-/home/pi/RobotRPiArduino-master/header/Route.h
+/home/pi/oldversion/RobotRPiArduino/header/Route.h
 
-/home/pi/RobotRPiArduino-master/src/Target.cpp
+/home/pi/oldversion/RobotRPiArduino/src/Target.cpp
 ../header/Target.h
-/home/pi/RobotRPiArduino-master/header/Target.h
+/home/pi/oldversion/RobotRPiArduino/header/Target.h
 

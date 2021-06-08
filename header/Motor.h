@@ -8,6 +8,7 @@
 class Motor{
     private:
         Location currentLocation;
+        //Route route;
         int arr[2];
         DirNouse direction;
         I2C i2c;

@@ -48,18 +48,20 @@ bool Route::isValid(int row, int col)
 bool Route::isTarget(int grid[][WIDTH], int row, int col){
      // Returns true if the cell is not blocked else false
     if (grid[row][col] == TARGET)
-        return (true);
+        return true;
     else
-        return (false);
+        return false;
+    return false;
 }
 
 bool Route::isUnBlocked(int grid[][WIDTH], int row, int col)
 {
     // Returns true if the cell is not blocked else false
     if (grid[row][col] == UNKNOWN || grid[row][col] == OPEN)
-        return (true);
+        return true;
     else
-        return (false);
+        return false;
+    return false;
 }
 
 bool Route::isDestination(int row, int col, Pair dest)
@@ -630,4 +632,5 @@ char Route::aStarSearch(int grid[][HEIGHT], Pair src, Pair dest)
         printf("Failed to find the Destination Cell\n");
         return 0;
     }
+    return 1;
 }

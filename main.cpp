@@ -25,9 +25,6 @@ using namespace std;
 #define MAX_RES_WIDTH 640
 #define MAX_RES_HEIGHT 320
 
-typedef enum{
-
-};
 Mat src_gray;
 Mat img;
 int thresh = 100;
@@ -123,9 +120,10 @@ int openCV(){
 	}
 }
 void pathfinding(){
-  Motor motor;
-  Map map(&motor,AMOUNT_LOCATIONS);
   Route route;
+  Motor motor;
+  Map map(&motor, AMOUNT_LOCATIONS);
+  
   //variable to count down for a 360 turn
   unsigned char turnCounter=2;
   //start x, start y, dest x, dest y; 
@@ -135,16 +133,15 @@ void pathfinding(){
     {0, HEIGHT-1},//left under corner
     {0,0}//top left corner
   };
-  int routeCounter=0;//counter reached locations f
-  DirNouse dirNouse = WEST;
+  int routeCounter=0;//counter reached locations 
+  DirNouse dirNouse/*= EAST*/;
 
-  //init maps
+  //init map variables
   int mapNew[HEIGHT][WIDTH];
   int mapOld[HEIGHT][WIDTH];
   int *ptrMap;
   //current location
-  int *curLocationX = motor.GetCurrentLocation();
-  int *curLocationY = curLocationX+1;
+  
   //int distance sensor
   int *distanceSensorArray = NULL;
   //set map
@@ -163,14 +160,13 @@ void pathfinding(){
   
   while(1){
     //update the distanceSensor//
-    dirNouse = motor.GetCurrentDirection();
-    std::cout << "dirNouse: " << dirNouse << std::endl;
-    distanceSensorArray = map.GetDistanceArray();
-    
+/*    dirNouse = map.motor->GetCurrentDirection();
+    std::cout << "dirNouse: " << dirNouse << std::endl;*/
+	map.motor->Drive(RIGHT90);
+	while(1);
+	/*
     //update map
-    curLocationX = motor.GetCurrentLocation();
-    curLocationY = curLocationX+1;
-    map.SetMap(dirNouse, distanceSensorArray, curLocationX, curLocationY);
+    map.SetMap();
     ptrMap = map.GetMap();
     for(int i =0;i<HEIGHT;i++){
       for(int j=0;j<WIDTH;j++){
@@ -188,7 +184,7 @@ void pathfinding(){
         }
       }
 
-      if(route.SetRoute(&mapOld[0][0], *curLocationX, *curLocationY, 
+      if(route.SetRoute(&mapOld[0][0], *map.motor->GetCurrentLocation(), *(map.motor->GetCurrentLocation()+1), 
         finishCoordinates[routeCounter][0], finishCoordinates[routeCounter][1]) == 0){
         exit(0);
       }
@@ -210,9 +206,9 @@ void pathfinding(){
       sleep(2);
     #endif
     #ifdef AUTOMATIC
-      motor.CalculateCurrentLocationWithRoute( route.GetRoute(), route.GetSize());
-      std::cout << "cur direction" << motor.GetCurrentDirection()<<std::endl;
-      std::cout << "cur location" << *motor.GetCurrentLocation() << "," << *(motor.GetCurrentLocation()+1) << std::endl;
+      map.motor->CalculateCurrentLocationWithRoute( route.GetRoute(), route.GetSize());
+      std::cout << "cur direction" << map.motor->GetCurrentDirection()<<std::endl;
+      std::cout << "cur location" << *map.motor->GetCurrentLocation() << "," << *(map.motor->GetCurrentLocation()+1) << std::endl;
     #endif
     //turn 360 after three tiles
     if(turnCounter--==0){
@@ -221,15 +217,16 @@ void pathfinding(){
     }
 
     if(targetDetected){//if target is detected get cur location + front distanc sensor
-        int *distance = map.GetDistanceArray();
-        map.CalculateTargetLocation(routeCounter,*curLocationX,*curLocationY,dirNouse,*(distance+1));//front camera = +1
+        
+        map.CalculateTargetLocation(routeCounter, *map.motor->GetCurrentLocation(),*(map.motor->GetCurrentLocation()+1),dirNouse);//front camera = +1
 
     }
     //ask for target hit
     if(map.GetTargetHit(routeCounter) && routeCounter < AMOUNT_LOCATIONS){
       routeCounter++;
     }
-  }  
+  }  */
+  }
 }
 
 Point2f thresh_callback(vector<vector<Point>> contourVar, Mat cannyVar)

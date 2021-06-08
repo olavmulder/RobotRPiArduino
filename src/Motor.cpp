@@ -4,13 +4,17 @@ Motor::Motor(){
     currentLocation.SetLocation(0,0);
     counter = 0;
     direction = EAST;
-
 }
 
 void Motor::Drive(DirDrive dir){
     i2c.OpenBus();
     i2c.WriteBytes(dir);
-    while(i2c.ReadBytes() != 1)std::cout<<"waiting for arduino, he's busy" << std::endl;
+    std::cout << "dir is " << dir << std::endl;
+    std::cout<<"waiting for arduino, he's busy" << std::endl;
+    
+    while(i2c.GetInterrupt() == false);
+    std::cout << "intterupt is true"<<std::endl;
+    i2c.ResetInterrupt();
     i2c.CloseBus();
 }
 void Motor::CalculateCurrentLocation(DirNouse dir, int* distanceArr){

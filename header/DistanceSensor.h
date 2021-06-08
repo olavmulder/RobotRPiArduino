@@ -6,11 +6,11 @@
 class DistanceSensor{
     private: 
         I2C i2c;
-        int distance[3];
+        int distance;
     public: 
-        int* GetDistance();
-        void SetDistance(int d, int i);
-        void ReadDistanceValue();
+        int GetDistance();
+        void SetDistance(int d);
+        void ReadDistanceValue(int id);
 
 };
 
