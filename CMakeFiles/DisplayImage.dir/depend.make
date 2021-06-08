@@ -10,6 +10,7 @@ CMakeFiles/DisplayImage.dir/main.cpp.o: header/Motor.h
 CMakeFiles/DisplayImage.dir/main.cpp.o: header/Route.h
 CMakeFiles/DisplayImage.dir/main.cpp.o: header/Target.h
 CMakeFiles/DisplayImage.dir/main.cpp.o: header/enumVar.h
+CMakeFiles/DisplayImage.dir/main.cpp.o: header/image.h
 CMakeFiles/DisplayImage.dir/main.cpp.o: main.cpp
 
 CMakeFiles/DisplayImage.dir/src/DataCamera.cpp.o: header/DataCamera.h
@@ -60,4 +61,39 @@ CMakeFiles/DisplayImage.dir/src/Target.cpp.o: header/Location.h
 CMakeFiles/DisplayImage.dir/src/Target.cpp.o: header/Target.h
 CMakeFiles/DisplayImage.dir/src/Target.cpp.o: header/enumVar.h
 CMakeFiles/DisplayImage.dir/src/Target.cpp.o: src/Target.cpp
+
+CMakeFiles/DisplayImage.dir/src/contouren.cpp.o: header/contouren.h
+CMakeFiles/DisplayImage.dir/src/contouren.cpp.o: header/draw.h
+CMakeFiles/DisplayImage.dir/src/contouren.cpp.o: header/grouping.h
+CMakeFiles/DisplayImage.dir/src/contouren.cpp.o: header/image.h
+CMakeFiles/DisplayImage.dir/src/contouren.cpp.o: header/target.h
+CMakeFiles/DisplayImage.dir/src/contouren.cpp.o: src/contouren.cpp
+
+CMakeFiles/DisplayImage.dir/src/draw.cpp.o: header/contouren.h
+CMakeFiles/DisplayImage.dir/src/draw.cpp.o: header/draw.h
+CMakeFiles/DisplayImage.dir/src/draw.cpp.o: header/grouping.h
+CMakeFiles/DisplayImage.dir/src/draw.cpp.o: header/image.h
+CMakeFiles/DisplayImage.dir/src/draw.cpp.o: header/target.h
+CMakeFiles/DisplayImage.dir/src/draw.cpp.o: src/draw.cpp
+
+CMakeFiles/DisplayImage.dir/src/grouping.cpp.o: header/contouren.h
+CMakeFiles/DisplayImage.dir/src/grouping.cpp.o: header/draw.h
+CMakeFiles/DisplayImage.dir/src/grouping.cpp.o: header/grouping.h
+CMakeFiles/DisplayImage.dir/src/grouping.cpp.o: header/image.h
+CMakeFiles/DisplayImage.dir/src/grouping.cpp.o: header/target.h
+CMakeFiles/DisplayImage.dir/src/grouping.cpp.o: src/grouping.cpp
+
+CMakeFiles/DisplayImage.dir/src/image.cpp.o: header/contouren.h
+CMakeFiles/DisplayImage.dir/src/image.cpp.o: header/draw.h
+CMakeFiles/DisplayImage.dir/src/image.cpp.o: header/grouping.h
+CMakeFiles/DisplayImage.dir/src/image.cpp.o: header/image.h
+CMakeFiles/DisplayImage.dir/src/image.cpp.o: header/target.h
+CMakeFiles/DisplayImage.dir/src/image.cpp.o: src/image.cpp
+
+CMakeFiles/DisplayImage.dir/src/target.cpp.o: header/contouren.h
+CMakeFiles/DisplayImage.dir/src/target.cpp.o: header/draw.h
+CMakeFiles/DisplayImage.dir/src/target.cpp.o: header/grouping.h
+CMakeFiles/DisplayImage.dir/src/target.cpp.o: header/image.h
+CMakeFiles/DisplayImage.dir/src/target.cpp.o: header/target.h
+CMakeFiles/DisplayImage.dir/src/target.cpp.o: src/target.cpp
 

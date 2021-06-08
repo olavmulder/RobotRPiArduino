@@ -1,9 +1,30 @@
 #include "../header/Motor.h"
+volatile bool interrupt = false;
+void  setup();
+void Interrupt();
+bool GetInterrupt();
+void ResetInterrupt();
+void setup(){
+	wiringPiSetup();			// Setup the library
+    pinMode(0, INPUT);		// Configure GPIO17 as an input
+    wiringPiISR (0, INT_EDGE_RISING, Interrupt) ;
+
+}
+void Interrupt(void){
+    interrupt = true;
+}
+bool GetInterrupt(){
+    return interrupt;
+}
+void ResetInterrupt(){
+    interrupt = false;
+}
 
 Motor::Motor(){
     currentLocation.SetLocation(0,0);
     counter = 0;
     direction = EAST;
+    setup();
 }
 
 void Motor::Drive(DirDrive dir){
@@ -11,10 +32,9 @@ void Motor::Drive(DirDrive dir){
     i2c.WriteBytes(dir);
     std::cout << "dir is " << dir << std::endl;
     std::cout<<"waiting for arduino, he's busy" << std::endl;
-    
-    while(i2c.GetInterrupt() == false);
+    while(GetInterrupt() == false);
     std::cout << "intterupt is true"<<std::endl;
-    i2c.ResetInterrupt();
+    ResetInterrupt();
     i2c.CloseBus();
 }
 void Motor::CalculateCurrentLocation(DirNouse dir, int* distanceArr){

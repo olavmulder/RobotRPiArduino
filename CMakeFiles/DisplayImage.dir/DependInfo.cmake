@@ -13,6 +13,11 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/pi/oldversion/RobotRPiArduino/src/Motor.cpp" "/home/pi/oldversion/RobotRPiArduino/CMakeFiles/DisplayImage.dir/src/Motor.cpp.o"
   "/home/pi/oldversion/RobotRPiArduino/src/Route.cpp" "/home/pi/oldversion/RobotRPiArduino/CMakeFiles/DisplayImage.dir/src/Route.cpp.o"
   "/home/pi/oldversion/RobotRPiArduino/src/Target.cpp" "/home/pi/oldversion/RobotRPiArduino/CMakeFiles/DisplayImage.dir/src/Target.cpp.o"
+  "/home/pi/oldversion/RobotRPiArduino/src/contouren.cpp" "/home/pi/oldversion/RobotRPiArduino/CMakeFiles/DisplayImage.dir/src/contouren.cpp.o"
+  "/home/pi/oldversion/RobotRPiArduino/src/draw.cpp" "/home/pi/oldversion/RobotRPiArduino/CMakeFiles/DisplayImage.dir/src/draw.cpp.o"
+  "/home/pi/oldversion/RobotRPiArduino/src/grouping.cpp" "/home/pi/oldversion/RobotRPiArduino/CMakeFiles/DisplayImage.dir/src/grouping.cpp.o"
+  "/home/pi/oldversion/RobotRPiArduino/src/image.cpp" "/home/pi/oldversion/RobotRPiArduino/CMakeFiles/DisplayImage.dir/src/image.cpp.o"
+  "/home/pi/oldversion/RobotRPiArduino/src/target.cpp" "/home/pi/oldversion/RobotRPiArduino/CMakeFiles/DisplayImage.dir/src/target.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

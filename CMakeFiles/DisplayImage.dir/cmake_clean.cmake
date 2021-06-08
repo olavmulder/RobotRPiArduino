@@ -8,6 +8,11 @@ file(REMOVE_RECURSE
   "CMakeFiles/DisplayImage.dir/src/Motor.cpp.o"
   "CMakeFiles/DisplayImage.dir/src/Route.cpp.o"
   "CMakeFiles/DisplayImage.dir/src/Target.cpp.o"
+  "CMakeFiles/DisplayImage.dir/src/contouren.cpp.o"
+  "CMakeFiles/DisplayImage.dir/src/draw.cpp.o"
+  "CMakeFiles/DisplayImage.dir/src/grouping.cpp.o"
+  "CMakeFiles/DisplayImage.dir/src/image.cpp.o"
+  "CMakeFiles/DisplayImage.dir/src/target.cpp.o"
   "DisplayImage"
   "DisplayImage.pdb"
 )

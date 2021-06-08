@@ -4,6 +4,7 @@
 #include "Location.h"
 #include "enumVar.h"
 #include <iostream>
+#include <wiringPi.h>
 #define TILE_SIZE 30 //tile size in cm
 class Motor{
     private:
@@ -14,7 +15,7 @@ class Motor{
         I2C i2c;
         int counter;//size of routeArray
     public:
-        Motor();
+        Motor(); 
         void Drive(DirDrive dir);
         void CalculateCurrentLocationWithRoute(int* array, int size);
         void CalculateCurrentLocation(DirNouse dir, int *distanceArr);

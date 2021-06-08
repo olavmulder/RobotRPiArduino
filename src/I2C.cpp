@@ -1,18 +1,6 @@
 #include "../header/I2c.h"
-I2C::I2C(){
-	wiringPiSetup();
-	pinMode(17, INPUT);
-	interrupt = false;
 
-	wiringPiISR(17, INT_EDGE_RISING,SetInterrupt);
-}
 
-bool I2C::GetInterrupt(){
-	return interrupt;
-}
-void I2C::ResetInterrupt(){
-	interrupt = false;
-}
 void I2C::CloseBus(){
 	close(file);
 }

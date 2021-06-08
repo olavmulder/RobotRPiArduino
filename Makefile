@@ -366,6 +366,141 @@ src/Target.cpp.s:
 	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/src/Target.cpp.s
 .PHONY : src/Target.cpp.s
 
+src/contouren.o: src/contouren.cpp.o
+
+.PHONY : src/contouren.o
+
+# target to build an object file
+src/contouren.cpp.o:
+	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/src/contouren.cpp.o
+.PHONY : src/contouren.cpp.o
+
+src/contouren.i: src/contouren.cpp.i
+
+.PHONY : src/contouren.i
+
+# target to preprocess a source file
+src/contouren.cpp.i:
+	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/src/contouren.cpp.i
+.PHONY : src/contouren.cpp.i
+
+src/contouren.s: src/contouren.cpp.s
+
+.PHONY : src/contouren.s
+
+# target to generate assembly for a file
+src/contouren.cpp.s:
+	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/src/contouren.cpp.s
+.PHONY : src/contouren.cpp.s
+
+src/draw.o: src/draw.cpp.o
+
+.PHONY : src/draw.o
+
+# target to build an object file
+src/draw.cpp.o:
+	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/src/draw.cpp.o
+.PHONY : src/draw.cpp.o
+
+src/draw.i: src/draw.cpp.i
+
+.PHONY : src/draw.i
+
+# target to preprocess a source file
+src/draw.cpp.i:
+	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/src/draw.cpp.i
+.PHONY : src/draw.cpp.i
+
+src/draw.s: src/draw.cpp.s
+
+.PHONY : src/draw.s
+
+# target to generate assembly for a file
+src/draw.cpp.s:
+	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/src/draw.cpp.s
+.PHONY : src/draw.cpp.s
+
+src/grouping.o: src/grouping.cpp.o
+
+.PHONY : src/grouping.o
+
+# target to build an object file
+src/grouping.cpp.o:
+	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/src/grouping.cpp.o
+.PHONY : src/grouping.cpp.o
+
+src/grouping.i: src/grouping.cpp.i
+
+.PHONY : src/grouping.i
+
+# target to preprocess a source file
+src/grouping.cpp.i:
+	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/src/grouping.cpp.i
+.PHONY : src/grouping.cpp.i
+
+src/grouping.s: src/grouping.cpp.s
+
+.PHONY : src/grouping.s
+
+# target to generate assembly for a file
+src/grouping.cpp.s:
+	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/src/grouping.cpp.s
+.PHONY : src/grouping.cpp.s
+
+src/image.o: src/image.cpp.o
+
+.PHONY : src/image.o
+
+# target to build an object file
+src/image.cpp.o:
+	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/src/image.cpp.o
+.PHONY : src/image.cpp.o
+
+src/image.i: src/image.cpp.i
+
+.PHONY : src/image.i
+
+# target to preprocess a source file
+src/image.cpp.i:
+	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/src/image.cpp.i
+.PHONY : src/image.cpp.i
+
+src/image.s: src/image.cpp.s
+
+.PHONY : src/image.s
+
+# target to generate assembly for a file
+src/image.cpp.s:
+	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/src/image.cpp.s
+.PHONY : src/image.cpp.s
+
+src/target.o: src/target.cpp.o
+
+.PHONY : src/target.o
+
+# target to build an object file
+src/target.cpp.o:
+	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/src/target.cpp.o
+.PHONY : src/target.cpp.o
+
+src/target.i: src/target.cpp.i
+
+.PHONY : src/target.i
+
+# target to preprocess a source file
+src/target.cpp.i:
+	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/src/target.cpp.i
+.PHONY : src/target.cpp.i
+
+src/target.s: src/target.cpp.s
+
+.PHONY : src/target.s
+
+# target to generate assembly for a file
+src/target.cpp.s:
+	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/src/target.cpp.s
+.PHONY : src/target.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -402,6 +537,21 @@ help:
 	@echo "... src/Target.o"
 	@echo "... src/Target.i"
 	@echo "... src/Target.s"
+	@echo "... src/contouren.o"
+	@echo "... src/contouren.i"
+	@echo "... src/contouren.s"
+	@echo "... src/draw.o"
+	@echo "... src/draw.i"
+	@echo "... src/draw.s"
+	@echo "... src/grouping.o"
+	@echo "... src/grouping.i"
+	@echo "... src/grouping.s"
+	@echo "... src/image.o"
+	@echo "... src/image.i"
+	@echo "... src/image.s"
+	@echo "... src/target.o"
+	@echo "... src/target.i"
+	@echo "... src/target.s"
 .PHONY : help
 
 

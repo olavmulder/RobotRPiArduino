@@ -11,6 +11,8 @@
     typedef enum{
         NORTH, EAST, SOUTH, WEST
     }DirNouse;
+
+
     #define WIDTH 5
     #define HEIGHT 5
 #endif

@@ -174,6 +174,71 @@ CMakeFiles/DisplayImage.dir/src/Target.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/DisplayImage.dir/src/Target.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/oldversion/RobotRPiArduino/src/Target.cpp -o CMakeFiles/DisplayImage.dir/src/Target.cpp.s
 
+CMakeFiles/DisplayImage.dir/src/contouren.cpp.o: CMakeFiles/DisplayImage.dir/flags.make
+CMakeFiles/DisplayImage.dir/src/contouren.cpp.o: src/contouren.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/oldversion/RobotRPiArduino/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/DisplayImage.dir/src/contouren.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/DisplayImage.dir/src/contouren.cpp.o -c /home/pi/oldversion/RobotRPiArduino/src/contouren.cpp
+
+CMakeFiles/DisplayImage.dir/src/contouren.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/DisplayImage.dir/src/contouren.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/oldversion/RobotRPiArduino/src/contouren.cpp > CMakeFiles/DisplayImage.dir/src/contouren.cpp.i
+
+CMakeFiles/DisplayImage.dir/src/contouren.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/DisplayImage.dir/src/contouren.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/oldversion/RobotRPiArduino/src/contouren.cpp -o CMakeFiles/DisplayImage.dir/src/contouren.cpp.s
+
+CMakeFiles/DisplayImage.dir/src/draw.cpp.o: CMakeFiles/DisplayImage.dir/flags.make
+CMakeFiles/DisplayImage.dir/src/draw.cpp.o: src/draw.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/oldversion/RobotRPiArduino/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/DisplayImage.dir/src/draw.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/DisplayImage.dir/src/draw.cpp.o -c /home/pi/oldversion/RobotRPiArduino/src/draw.cpp
+
+CMakeFiles/DisplayImage.dir/src/draw.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/DisplayImage.dir/src/draw.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/oldversion/RobotRPiArduino/src/draw.cpp > CMakeFiles/DisplayImage.dir/src/draw.cpp.i
+
+CMakeFiles/DisplayImage.dir/src/draw.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/DisplayImage.dir/src/draw.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/oldversion/RobotRPiArduino/src/draw.cpp -o CMakeFiles/DisplayImage.dir/src/draw.cpp.s
+
+CMakeFiles/DisplayImage.dir/src/grouping.cpp.o: CMakeFiles/DisplayImage.dir/flags.make
+CMakeFiles/DisplayImage.dir/src/grouping.cpp.o: src/grouping.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/oldversion/RobotRPiArduino/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/DisplayImage.dir/src/grouping.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/DisplayImage.dir/src/grouping.cpp.o -c /home/pi/oldversion/RobotRPiArduino/src/grouping.cpp
+
+CMakeFiles/DisplayImage.dir/src/grouping.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/DisplayImage.dir/src/grouping.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/oldversion/RobotRPiArduino/src/grouping.cpp > CMakeFiles/DisplayImage.dir/src/grouping.cpp.i
+
+CMakeFiles/DisplayImage.dir/src/grouping.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/DisplayImage.dir/src/grouping.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/oldversion/RobotRPiArduino/src/grouping.cpp -o CMakeFiles/DisplayImage.dir/src/grouping.cpp.s
+
+CMakeFiles/DisplayImage.dir/src/image.cpp.o: CMakeFiles/DisplayImage.dir/flags.make
+CMakeFiles/DisplayImage.dir/src/image.cpp.o: src/image.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/oldversion/RobotRPiArduino/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/DisplayImage.dir/src/image.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/DisplayImage.dir/src/image.cpp.o -c /home/pi/oldversion/RobotRPiArduino/src/image.cpp
+
+CMakeFiles/DisplayImage.dir/src/image.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/DisplayImage.dir/src/image.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/oldversion/RobotRPiArduino/src/image.cpp > CMakeFiles/DisplayImage.dir/src/image.cpp.i
+
+CMakeFiles/DisplayImage.dir/src/image.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/DisplayImage.dir/src/image.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/oldversion/RobotRPiArduino/src/image.cpp -o CMakeFiles/DisplayImage.dir/src/image.cpp.s
+
+CMakeFiles/DisplayImage.dir/src/target.cpp.o: CMakeFiles/DisplayImage.dir/flags.make
+CMakeFiles/DisplayImage.dir/src/target.cpp.o: src/target.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/oldversion/RobotRPiArduino/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/DisplayImage.dir/src/target.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/DisplayImage.dir/src/target.cpp.o -c /home/pi/oldversion/RobotRPiArduino/src/target.cpp
+
+CMakeFiles/DisplayImage.dir/src/target.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/DisplayImage.dir/src/target.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/oldversion/RobotRPiArduino/src/target.cpp > CMakeFiles/DisplayImage.dir/src/target.cpp.i
+
+CMakeFiles/DisplayImage.dir/src/target.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/DisplayImage.dir/src/target.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/oldversion/RobotRPiArduino/src/target.cpp -o CMakeFiles/DisplayImage.dir/src/target.cpp.s
+
 # Object files for target DisplayImage
 DisplayImage_OBJECTS = \
 "CMakeFiles/DisplayImage.dir/main.cpp.o" \
@@ -184,7 +249,12 @@ DisplayImage_OBJECTS = \
 "CMakeFiles/DisplayImage.dir/src/Map.cpp.o" \
 "CMakeFiles/DisplayImage.dir/src/Motor.cpp.o" \
 "CMakeFiles/DisplayImage.dir/src/Route.cpp.o" \
-"CMakeFiles/DisplayImage.dir/src/Target.cpp.o"
+"CMakeFiles/DisplayImage.dir/src/Target.cpp.o" \
+"CMakeFiles/DisplayImage.dir/src/contouren.cpp.o" \
+"CMakeFiles/DisplayImage.dir/src/draw.cpp.o" \
+"CMakeFiles/DisplayImage.dir/src/grouping.cpp.o" \
+"CMakeFiles/DisplayImage.dir/src/image.cpp.o" \
+"CMakeFiles/DisplayImage.dir/src/target.cpp.o"
 
 # External object files for target DisplayImage
 DisplayImage_EXTERNAL_OBJECTS =
@@ -198,6 +268,11 @@ DisplayImage: CMakeFiles/DisplayImage.dir/src/Map.cpp.o
 DisplayImage: CMakeFiles/DisplayImage.dir/src/Motor.cpp.o
 DisplayImage: CMakeFiles/DisplayImage.dir/src/Route.cpp.o
 DisplayImage: CMakeFiles/DisplayImage.dir/src/Target.cpp.o
+DisplayImage: CMakeFiles/DisplayImage.dir/src/contouren.cpp.o
+DisplayImage: CMakeFiles/DisplayImage.dir/src/draw.cpp.o
+DisplayImage: CMakeFiles/DisplayImage.dir/src/grouping.cpp.o
+DisplayImage: CMakeFiles/DisplayImage.dir/src/image.cpp.o
+DisplayImage: CMakeFiles/DisplayImage.dir/src/target.cpp.o
 DisplayImage: CMakeFiles/DisplayImage.dir/build.make
 DisplayImage: /usr/lib/arm-linux-gnueabihf/libopencv_shape.so.3.2.0
 DisplayImage: /usr/lib/arm-linux-gnueabihf/libopencv_stitching.so.3.2.0
@@ -242,7 +317,7 @@ DisplayImage: /usr/lib/arm-linux-gnueabihf/libopencv_imgcodecs.so.3.2.0
 DisplayImage: /usr/lib/arm-linux-gnueabihf/libopencv_imgproc.so.3.2.0
 DisplayImage: /usr/lib/arm-linux-gnueabihf/libopencv_core.so.3.2.0
 DisplayImage: CMakeFiles/DisplayImage.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pi/oldversion/RobotRPiArduino/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable DisplayImage"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pi/oldversion/RobotRPiArduino/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX executable DisplayImage"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/DisplayImage.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
