@@ -115,9 +115,6 @@ void pathfinding(){
     //update the distanceSensor//
 /*    dirNouse = map.motor->GetCurrentDirection();
     std::cout << "dirNouse: " << dirNouse << std::endl;*/
-	map.motor->Drive(RIGHT90);
-	
-	
     //update map
     map.SetMap();
     ptrMap = map.GetMap();
@@ -164,15 +161,13 @@ void pathfinding(){
       std::cout << "cur location" << *map.motor->GetCurrentLocation() << "," << *(map.motor->GetCurrentLocation()+1) << std::endl;
     #endif
     //turn 360 after three tiles
-    if(turnCounter--==0){
+	turnCounter --;
+    if(turnCounter==0){
       motor.Drive(TURN360);
       turnCounter = 2;
     }
-
-    if(targetDetected){//if target is detected get cur location + front distanc sensor
-        
+    if(targetDetected){//if target is detected get cur location + front distanc sensor 
         map.CalculateTargetLocation(routeCounter, *map.motor->GetCurrentLocation(),*(map.motor->GetCurrentLocation()+1),dirNouse);//front camera = +1
-
     }
     //ask for target hit
     if(map.GetTargetHit(routeCounter) && routeCounter < AMOUNT_LOCATIONS){
