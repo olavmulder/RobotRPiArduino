@@ -24,6 +24,7 @@ class Map{
         int arrayDistanceValues[3];
         int locArr[2];
         int amountTargets;
+        bool changed;
     public:
 
         Motor *motor;
@@ -32,11 +33,13 @@ class Map{
         int* GetMap();
         void SetMap();
         void SetDistanceArray();
-        bool CheckDifference(int*oldMap , int*newMap);
+        void CheckDifference(int*oldMap , int*newMap);
         //target
         int* GetTargetLocation(int id);
         bool GetTargetHit(int id);
         void CalculateTargetLocation(int id, int x, int y, DirNouse dir);
+        void SetChanged(bool status);
+        bool GetChanged();
 };
 
 #endif

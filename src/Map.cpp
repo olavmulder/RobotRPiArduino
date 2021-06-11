@@ -11,6 +11,13 @@ Map::Map(Motor *mot, int amountTarget){
     amountTargets = amountTarget;
     target.resize(amountTargets);
     ds.resize(3);
+    changed = false;
+}
+void Map::SetChanged(bool status){
+    changed = status;
+}
+bool Map::GetChanged(){
+    return changed;
 }
 int* Map::GetTargetLocation(int id){
   return target.at(id).GetTargetLocation();
@@ -46,7 +53,7 @@ void Map::SetMap(){
     int *y = x+1;
     //get current direction
     DirNouse dir = motor->GetCurrentDirection();
-    std::cout << "dirNouse: " << dir << std::endl;
+    //std::cout << "dirNouse: " << dir << std::endl;
 
 
     //convert ds distance to amount of tiles;
@@ -70,11 +77,8 @@ void Map::SetMap(){
    
 
     int numberInMap = *x+(*y * WIDTH);
-    std::cout << "cur x: " << *x << " cur y: "<< *y<<std::endl;
-    std::cout << "number is map :" << numberInMap << std::endl;
-
     int i = 1;
-    printf("tileA:%d, tileB:%d, tileC:%d\n", tileDistanceA, tileDistanceB, tileDistanceC);
+    //printf("tileA:%d, tileB:%d, tileC:%d\n", tileDistanceA, tileDistanceB, tileDistanceC);
     if(dir == NORTH){//0= west, 1 = north, 2 = east
         if((numberInMap-tileDistanceA>= 0) && (numberInMap-tileDistanceA < WIDTH*HEIGHT)){//stay in map memory
             if(*x - tileDistanceA > 0 ){//prevent going out of field
@@ -212,10 +216,10 @@ int* Map::GetMap(){
     return &map[0];
 }
 
-bool Map::CheckDifference(int* oldMap, int *newMap){
+void Map::CheckDifference(int* oldMap, int *newMap){
     for(int i=0;i<WIDTH*HEIGHT;i++){
-        if(*(oldMap+i) != *(newMap+i))return true;
+        if(*(oldMap+i) != *(newMap+i))SetChanged(true);
     }
-    return false;
+    SetChanged(false);
     
 }

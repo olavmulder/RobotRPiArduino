@@ -13,11 +13,10 @@ class Motor{
         int arr[2];
         DirNouse direction;
         I2C i2c;
-        int counter;//size of routeArray
     public:
         Motor(); 
         void Drive(DirDrive dir);
-        void CalculateCurrentLocationWithRoute(int* array, int size);
+        void CalculateCurrentLocationWithRoute(int* array, int size, int counter);
         void CalculateCurrentLocation(DirNouse dir, int *distanceArr);
         int* GetCurrentLocation();
         void SetCurrentLocation(int x, int y);

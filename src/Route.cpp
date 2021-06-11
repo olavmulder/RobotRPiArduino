@@ -1,30 +1,53 @@
 #include "../header/Route.h"
 Route::Route(){    
     //alloc routeArray;
-    routeArray = (int*)malloc((WIDTH*HEIGHT+1)*sizeof(int));
+    //routeArray = (int*)malloc((WIDTH*HEIGHT+1)*sizeof(int));
+    routeCounter=0;
+    stepInRouteCounter = 0;
+}
+void Route::SetRouteCounter(int value){
+    routeCounter = value;
+}
+int Route::GetRouteCounter(){
+    return routeCounter;
+}
+void Route::PrintRouteCounter(){
+    std::cout << "Route Counter: " << GetRouteCounter() << std::endl;
+}
+void Route::SetstepInRouteCounter(int value){
+    stepInRouteCounter = value;
+}
+int Route::GetstepInRouteCounter(){
+    return stepInRouteCounter;
+}
+void Route::PrintstepInRouteCounter(){
+    std::cout << "amount steps in current route: " << GetstepInRouteCounter() << std::endl;
 }
 void Route::PrintRoute(){
+    //routearray[y][x];
     std::cout << "Route: ";
-    for(int i=0;i< GetSize();i++){
-        std::cout << "(" << *(routeArray+i);
-        i++;
-        std::cout << "," << *(routeArray+i)<< ") ->";
+    for(int i=stepInRouteCounter/2;i< GetSize();i++){
+        std::cout << "("<< routeArray[i][0]<<","<< routeArray[i][1] << "), ";
     }
     std::cout << std::endl;
+    
 }
 int* Route::GetRoute(){
-    return routeArray;
+
+    return &routeArray[0][0];
 }
 char Route::SetRoute(int* map, int sX, int sY,int dX, int dY ){
     //set map in grid variable;
+    //grid[y][x];
+    // i = y-as, j= x-as
     for(int i = 0;i<HEIGHT;i++){
         for(int j = 0;j<WIDTH;j++){
             grid[i][j] = *(map+(i*WIDTH)+j);
         }
     }
     //set src & dest
-    Pair src = make_pair(sX, sY);
-    Pair dest = make_pair(dX,dY);
+    Pair src = make_pair(sY, sX);
+    Pair dest = make_pair(dY,dX);
     //start algoritme
     if(aStarSearch(grid,src,dest)== 0){
         std::cout << "-1 for aStarSearch" << std::endl;
@@ -96,20 +119,26 @@ void Route::tracePath(cell cellDetails[][WIDTH], Pair dest)
         row = temp_row;
         col = temp_col;
     }
+    //Path.push(make_pair(row, col));
     sizeOfPath = 0;
-    Path.push(make_pair(row, col));
     while (!Path.empty()) {
         pair<int, int> p = Path.top();
+        //y,x;
+        routeArray[sizeOfPath][0] = p.second;
+        routeArray[sizeOfPath][1] = p.first;
+        sizeOfPath++;
         Path.pop();
-		*(routeArray+sizeOfPath) = p.first;
+		/**(routeArray+sizeOfPath) = p.first;
 		sizeOfPath++;
         *(routeArray+sizeOfPath) = p.second;
         sizeOfPath++;
-       
+        //printf("%d, %d\n", p.first, p.second);
+        Path.pop();
+        i++;*/
     }
     return;
 }
-char Route::aStarSearch(int grid[][HEIGHT], Pair src, Pair dest)
+char Route::aStarSearch(int grid[][WIDTH], Pair src, Pair dest)
 {
     // If the source is out of range
     if (isValid(src.first, src.second) == false) {
@@ -152,7 +181,7 @@ char Route::aStarSearch(int grid[][HEIGHT], Pair src, Pair dest)
  
     // Declare a 2D array of structure to hold the details
     // of that cell
-    cell cellDetails[HEIGHT][WIDTH];
+    cell cellDetails[WIDTH][HEIGHT];
  
     int i, j;
  

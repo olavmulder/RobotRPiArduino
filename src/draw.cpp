@@ -3,8 +3,6 @@
 using namespace cv;
 using namespace std;
 
-
-
 // public view methods
 
 

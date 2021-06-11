@@ -22,7 +22,6 @@ void ResetInterrupt(){
 
 Motor::Motor(){
     currentLocation.SetLocation(0,0);
-    counter = 0;
     direction = EAST;
     setup();
 }
@@ -30,8 +29,8 @@ Motor::Motor(){
 void Motor::Drive(DirDrive dir){
     i2c.OpenBus();
     i2c.WriteBytes(dir);
-    std::cout << "dir is " << dir << std::endl;
-    std::cout<<"waiting for arduino, he's busy" << std::endl;
+    //std::cout << "dir is " << dir << std::endl;
+    std::cout<< dir <<": waiting for arduino, he's busy" << std::endl;
     while(GetInterrupt() == false);
     std::cout << "intterupt is true"<<std::endl;
     ResetInterrupt();
@@ -89,33 +88,22 @@ void Motor::CalculateCurrentLocation(DirNouse dir, int* distanceArr){
 
 
 }
-void Motor::CalculateCurrentLocationWithRoute(int *array, int size){
-
+void Motor::CalculateCurrentLocationWithRoute(int *array, int size, int counter){
+    //array [x,y]
     int newX, newY;
     int oldX;
     int oldY;
-    for(counter = 0;counter<size;counter+=2){
+    if(counter < size*2){//coutner = only 1 per pair, 
         newX = *(array+counter);
         newY = *(array+counter+1);
         oldX = *(GetCurrentLocation());
         oldY = *(GetCurrentLocation()+1);
-        /* start::
-            ------------------------------------------
-            |  >                                      |
-            |                                         |
-            |   \/                                    |
-            |                                         |
-            |                                         |
-            |                                         |
-            |                                         |
-            -------------------------------------------
-        */
+        std::cout << "currentLocation:(" << oldX << "," << oldY << ") -> new location: (" << newX << ","<< newY << ")"<< std::endl;
 
         if(newX > oldX){//robot RIGHT90
             if(direction == NORTH){
                 Drive(RIGHT90);
-                Drive(FORWARD);
-                
+                Drive(FORWARD);  
             }
             if(direction == EAST){
                 Drive(FORWARD);
@@ -177,12 +165,13 @@ void Motor::CalculateCurrentLocationWithRoute(int *array, int size){
                 Drive(FORWARD); 
             }
             if(direction == SOUTH){
-                Drive(BACK);    
+                Drive(TURN360);  
+                Drive(FORWARD);     
             }
             if(direction == WEST){
                 Drive(RIGHT90);
                 Drive(FORWARD);
-        }
+            }
             direction = NORTH;
         }
         currentLocation.SetLocation(newX, newY);

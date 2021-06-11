@@ -1,5 +1,4 @@
 #include "../header/contouren.h"
-#include "../header/grouping.h"
 
 using namespace cv;
 using namespace std;
@@ -33,8 +32,27 @@ void Contouren::setCenters(){
 	}
 }
 
+vector<vector<Point>> Contouren::getContours(){
+    return contours;
+}
+vector<vector<Point>> Contouren::getContoursPoly(){
+    return contours_poly;
+}
+vector<Moments> Contouren::getMoments(){
+    return mu;
+}
+vector<Point2f> Contouren::getCenters(){
+    return mc;
+}
+int Contouren::getContourSize(){
+    return contours.size();
+}
+Mat Contouren::getProcessed(){
+    return processed;
+}
+
 Contouren::Contouren(Mat img){
-    processed = img;
+    this->processed = img;
     setContouren();
     contours_poly.resize(contours.size());
     mu.resize(contours.size());
@@ -42,5 +60,4 @@ Contouren::Contouren(Mat img){
     setApproxPoly();
     setMoments();
     setCenters();
-    Grouping Grouping(mc, contours_poly, contours.size(), processed);
 }

@@ -6,12 +6,9 @@
 #include "opencv2/imgproc.hpp"
 #include <iostream>
 #include <cmath>
-#include "draw.h"
-#include "target.h"
-#include "contouren.h"
 
-#define WIDTH 640
-#define HEIGHT 480
+#define WIDTH_IMG 640
+#define HEIGHT_IMG 480
 
 using namespace cv;
 using namespace std;
@@ -30,8 +27,8 @@ class Draw{
         Scalar color1 = Scalar(167,151,0); // B G R values
         Scalar color2 = Scalar(0,100,200); // B G R values
         Mat processed;
-        Mat drawing = Mat::zeros( HEIGHT, WIDTH, CV_8UC3 );
-        Mat targetMat = Mat::zeros( HEIGHT, WIDTH, CV_8UC3 );
+        Mat drawing = Mat::zeros( HEIGHT_IMG, WIDTH_IMG, CV_8UC3 );
+        Mat targetMat = Mat::zeros( HEIGHT_IMG, WIDTH_IMG, CV_8UC3 );
         vector<vector<Point>> contours_poly;
         vector<Point2f>  targetGroup;
         vector<Vec4i> hierarchy;

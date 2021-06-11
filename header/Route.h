@@ -24,9 +24,12 @@ struct cell {
 class Route{
     
     private:
-        int *routeArray;
+        int routeArray[HEIGHT*WIDTH][2];
         Location finishLocation;
         int sizeOfPath;
+        int stepInRouteCounter;
+        int routeCounter;
+
         int grid[HEIGHT][WIDTH];
         int srcX, srcY, destX, destY;
         //function of A*
@@ -40,11 +43,17 @@ class Route{
         
     public:
         Route();
+        int GetstepInRouteCounter();
+        void SetstepInRouteCounter(int value);
         int* GetRoute();
         char SetRoute(int* map, int, int ,int,int);
         int GetSize();
         void PrintRoute();
-        
+        void SetRouteCounter(int value);
+        int GetRouteCounter();
+        void PrintstepInRouteCounter();
+        void PrintRouteCounter();
+       
 };
 
 #endif

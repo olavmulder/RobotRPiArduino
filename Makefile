@@ -474,32 +474,32 @@ src/image.cpp.s:
 	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/src/image.cpp.s
 .PHONY : src/image.cpp.s
 
-src/target.o: src/target.cpp.o
+src/target_cv.o: src/target_cv.cpp.o
 
-.PHONY : src/target.o
+.PHONY : src/target_cv.o
 
 # target to build an object file
-src/target.cpp.o:
-	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/src/target.cpp.o
-.PHONY : src/target.cpp.o
+src/target_cv.cpp.o:
+	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/src/target_cv.cpp.o
+.PHONY : src/target_cv.cpp.o
 
-src/target.i: src/target.cpp.i
+src/target_cv.i: src/target_cv.cpp.i
 
-.PHONY : src/target.i
+.PHONY : src/target_cv.i
 
 # target to preprocess a source file
-src/target.cpp.i:
-	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/src/target.cpp.i
-.PHONY : src/target.cpp.i
+src/target_cv.cpp.i:
+	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/src/target_cv.cpp.i
+.PHONY : src/target_cv.cpp.i
 
-src/target.s: src/target.cpp.s
+src/target_cv.s: src/target_cv.cpp.s
 
-.PHONY : src/target.s
+.PHONY : src/target_cv.s
 
 # target to generate assembly for a file
-src/target.cpp.s:
-	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/src/target.cpp.s
-.PHONY : src/target.cpp.s
+src/target_cv.cpp.s:
+	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/src/target_cv.cpp.s
+.PHONY : src/target_cv.cpp.s
 
 # Help Target
 help:
@@ -549,9 +549,9 @@ help:
 	@echo "... src/image.o"
 	@echo "... src/image.i"
 	@echo "... src/image.s"
-	@echo "... src/target.o"
-	@echo "... src/target.i"
-	@echo "... src/target.s"
+	@echo "... src/target_cv.o"
+	@echo "... src/target_cv.i"
+	@echo "... src/target_cv.s"
 .PHONY : help
 
 

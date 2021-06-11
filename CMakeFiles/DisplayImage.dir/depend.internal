@@ -10,8 +10,12 @@ CMakeFiles/DisplayImage.dir/main.cpp.o
  /home/pi/oldversion/RobotRPiArduino/header/Motor.h
  /home/pi/oldversion/RobotRPiArduino/header/Route.h
  /home/pi/oldversion/RobotRPiArduino/header/Target.h
+ /home/pi/oldversion/RobotRPiArduino/header/contouren.h
+ /home/pi/oldversion/RobotRPiArduino/header/draw.h
  /home/pi/oldversion/RobotRPiArduino/header/enumVar.h
+ /home/pi/oldversion/RobotRPiArduino/header/grouping.h
  /home/pi/oldversion/RobotRPiArduino/header/image.h
+ /home/pi/oldversion/RobotRPiArduino/header/target_cv.h
  /home/pi/oldversion/RobotRPiArduino/main.cpp
 CMakeFiles/DisplayImage.dir/src/DataCamera.cpp.o
  /home/pi/oldversion/RobotRPiArduino/header/DataCamera.h
@@ -64,36 +68,17 @@ CMakeFiles/DisplayImage.dir/src/Target.cpp.o
  /home/pi/oldversion/RobotRPiArduino/src/Target.cpp
 CMakeFiles/DisplayImage.dir/src/contouren.cpp.o
  /home/pi/oldversion/RobotRPiArduino/header/contouren.h
- /home/pi/oldversion/RobotRPiArduino/header/draw.h
- /home/pi/oldversion/RobotRPiArduino/header/grouping.h
- /home/pi/oldversion/RobotRPiArduino/header/image.h
- /home/pi/oldversion/RobotRPiArduino/header/target.h
  /home/pi/oldversion/RobotRPiArduino/src/contouren.cpp
 CMakeFiles/DisplayImage.dir/src/draw.cpp.o
- /home/pi/oldversion/RobotRPiArduino/header/contouren.h
  /home/pi/oldversion/RobotRPiArduino/header/draw.h
- /home/pi/oldversion/RobotRPiArduino/header/grouping.h
- /home/pi/oldversion/RobotRPiArduino/header/image.h
- /home/pi/oldversion/RobotRPiArduino/header/target.h
  /home/pi/oldversion/RobotRPiArduino/src/draw.cpp
 CMakeFiles/DisplayImage.dir/src/grouping.cpp.o
- /home/pi/oldversion/RobotRPiArduino/header/contouren.h
- /home/pi/oldversion/RobotRPiArduino/header/draw.h
  /home/pi/oldversion/RobotRPiArduino/header/grouping.h
- /home/pi/oldversion/RobotRPiArduino/header/image.h
- /home/pi/oldversion/RobotRPiArduino/header/target.h
  /home/pi/oldversion/RobotRPiArduino/src/grouping.cpp
 CMakeFiles/DisplayImage.dir/src/image.cpp.o
  /home/pi/oldversion/RobotRPiArduino/header/contouren.h
- /home/pi/oldversion/RobotRPiArduino/header/draw.h
- /home/pi/oldversion/RobotRPiArduino/header/grouping.h
  /home/pi/oldversion/RobotRPiArduino/header/image.h
- /home/pi/oldversion/RobotRPiArduino/header/target.h
  /home/pi/oldversion/RobotRPiArduino/src/image.cpp
-CMakeFiles/DisplayImage.dir/src/target.cpp.o
- /home/pi/oldversion/RobotRPiArduino/header/contouren.h
- /home/pi/oldversion/RobotRPiArduino/header/draw.h
- /home/pi/oldversion/RobotRPiArduino/header/grouping.h
- /home/pi/oldversion/RobotRPiArduino/header/image.h
- /home/pi/oldversion/RobotRPiArduino/header/target.h
- /home/pi/oldversion/RobotRPiArduino/src/target.cpp
+CMakeFiles/DisplayImage.dir/src/target_cv.cpp.o
+ /home/pi/oldversion/RobotRPiArduino/header/target_cv.h
+ /home/pi/oldversion/RobotRPiArduino/src/target_cv.cpp

@@ -55,13 +55,23 @@ void Grouping::setTotalGroups(){
 	}
 }
 
+vector<Point2f> Grouping::getTotalGroup(){
+   return totalGroup;
+}
+int Grouping::getGroupCounter(){
+   return groupCounter;
+}
+vector<int> Grouping::getArray(){
+   return array;
+}
+
+
 // // public update (controller) methods
 Grouping::Grouping(vector<Point2f> group, vector<vector<Point>> contours_poly, int contoursSize, Mat processed){
    this->group = group;
    this->contoursSize = contoursSize;
    this->contours_poly = contours_poly;
-   this->processed = processed;
-
+   
    mcGroup.resize(contoursSize);
    array.resize(contoursSize);
    totalGroup.resize(contoursSize);
@@ -69,6 +79,4 @@ Grouping::Grouping(vector<Point2f> group, vector<vector<Point>> contours_poly, i
    setSelectionSort(group, contoursSize);
    setGroup();
    setTotalGroups();
-   
-   Target Target(totalGroup, groupCounter, array, contoursSize, contours_poly, processed);
 }

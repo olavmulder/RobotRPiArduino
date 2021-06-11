@@ -12,7 +12,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/DisplayImage.dir/src/draw.cpp.o"
   "CMakeFiles/DisplayImage.dir/src/grouping.cpp.o"
   "CMakeFiles/DisplayImage.dir/src/image.cpp.o"
-  "CMakeFiles/DisplayImage.dir/src/target.cpp.o"
+  "CMakeFiles/DisplayImage.dir/src/target_cv.cpp.o"
   "DisplayImage"
   "DisplayImage.pdb"
 )

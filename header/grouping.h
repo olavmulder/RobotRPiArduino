@@ -6,9 +6,7 @@
 #include "opencv2/imgproc.hpp"
 #include <iostream>
 #include <cmath>
-#include "image.h"
-#include "contouren.h"
-#include "target.h"
+
 
 using namespace cv;
 using namespace std;
@@ -16,13 +14,17 @@ using namespace std;
 class Grouping{
     public:
         // view methods
-
-        void setSwap(float *xp, float *yp);
-        void setSelectionSort(vector<Point2f> arr, int n);
-        Grouping(vector<Point2f> group, vector<vector<Point>> contours_poly, int contoursSize, Mat processed);
         void setGroup();
         void setTotalGroups();
-        Grouping();
+        void setSwap(float *xp, float *yp);
+        void setSelectionSort(vector<Point2f> arr, int n);
+
+        Grouping(vector<Point2f> group, vector<vector<Point>> contours_poly, int contoursSize, Mat processed);
+
+        vector<Point2f> getTotalGroup();
+        int getGroupCounter();
+        vector<int> getArray();
+        //Grouping();
 
         // update (controller) methods
 
@@ -34,7 +36,6 @@ class Grouping{
         vector<Point2f> mcGroup;
         vector<Point2f> totalGroup;
         vector<vector<Point>> contours_poly;
-        Mat processed;
         // view methods
         // update methods
 };

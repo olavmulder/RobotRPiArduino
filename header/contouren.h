@@ -8,9 +8,6 @@
 #include "opencv2/highgui.hpp"
 #include "opencv2/imgproc.hpp"
 
-#include "image.h"
-#include "grouping.h"
-
 using namespace cv;
 using namespace std;
 
@@ -25,6 +22,14 @@ class Contouren{
         void setApproxPoly();
         void setMoments();
         void setCenters();
+        
+        int getContourSize();
+        vector<vector<Point>> getContours();
+        vector<vector<Point>> getContoursPoly();
+        vector<Moments> getMoments();
+        vector<Point2f> getCenters();
+        Mat getProcessed();
+
         Contouren(Mat img);        
 
     private:

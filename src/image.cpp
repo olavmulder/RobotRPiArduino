@@ -16,7 +16,7 @@ void Image::showProcessed() {
     imshow( "Processed Image", processedImage );
 }
 Mat Image::getImage(){
-    return image;
+    return processedImage;
 }
 void Image::setProcess(){
     cvtColor( image, processedImage, COLOR_BGR2GRAY );
@@ -26,9 +26,8 @@ void Image::setProcess(){
 }
 Image::Image(Mat img){
 
-    image = img;
+    this->image = img;
     setProcess();
     showImage();
     //showProcessed();
-    Contouren Contouren(processedImage);
 }

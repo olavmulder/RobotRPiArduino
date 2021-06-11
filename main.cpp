@@ -4,14 +4,21 @@
 #include "header/I2c.h"
 #include "header/enumVar.h"
 #include "header/image.h"
-
+/*
+look at two times staring point in route array
+*/
 #include "opencv2/imgcodecs.hpp"
 #include "opencv2/highgui.hpp"
 #include "opencv2/imgproc.hpp"
 
+#include "header/image.h"
+#include "header/contouren.h"
+#include "header/grouping.h"
+#include "header/target_cv.h"
+#include "header/draw.h"
+
 #include <wiringPiI2C.h>
 #include <cmath>
-
 #include <iostream>
 #include <fstream>
 #include <thread>
@@ -27,6 +34,8 @@ using namespace std;
 #define MAX_RES_WIDTH 640
 #define MAX_RES_HEIGHT 320
 
+int targetOffset;
+//#define TURN
 
 /*
 Mat src_gray;
@@ -44,12 +53,8 @@ RNG rng(12345);*/
         twee waardes sturen? 0 & 1 daarna waarde, 1 positief, 0 negatief
 */
 
-Point2f thresh_callback(vector<vector<Point>> contourVar, Mat cannyVar);
-void swap(float *xp, float *yp); 
-void selectionSort(vector<Point2f> arr, int n);
-
 void pathfinding();
-int openCV();
+void openCV();
 //global state:
 bool targetDetected =false;
 
@@ -61,7 +66,7 @@ int main() {
   cv.join();
   return 0;
 }
-int openCV(){
+void openCV(){
 
 	Mat img;
 	VideoCapture cap(0);
@@ -69,8 +74,14 @@ int openCV(){
 	while(true){
 		cap.read(img);
 		Image Image(img);
+		Contouren Contouren(Image.getImage());
+		Grouping Grouping(Contouren.getCenters(), Contouren.getContoursPoly(), Contouren.getContourSize(), Contouren.getProcessed());
+	  TargetCV TargetCV(Grouping.getTotalGroup(), Grouping.getGroupCounter(), Grouping.getArray(), Contouren.getContourSize(), Contouren.getContoursPoly());
+		//Draw Draw(Contouren.getContoursPoly(), Target_CV.getTargetGroups(), Contouren.getProcessed());
+		
+		//targetOffset = Target_CV.getOffset();
 		waitKey(1);
-	}
+  }
 }
 void pathfinding(){
   Route route;
@@ -78,16 +89,16 @@ void pathfinding(){
   Map map(&motor, AMOUNT_LOCATIONS);
   
   //variable to count down for a 360 turn
-  unsigned char turnCounter=2;
   //start x, start y, dest x, dest y; 
+  //x,y
   int finishCoordinates[][2] = {
     {WIDTH-1, 0},//right top corner
     {WIDTH-1,HEIGHT-1},//right under corner
     {0, HEIGHT-1},//left under corner
     {0,0}//top left corner
   };
-  int routeCounter=0;//counter reached locations 
-  DirNouse dirNouse/*= EAST*/;
+  
+  DirNouse dirNouse;/*= EAST*/;
 
   //init map variables
   int mapNew[HEIGHT][WIDTH];
@@ -96,9 +107,9 @@ void pathfinding(){
   //current location
   
   //int distance sensor
-  int *distanceSensorArray = NULL;
+ // int *distanceSensorArray = NULL;
   //set map
-  /*map.SetMap(dirNouse, distanceSensorArray, curLocationX, curLocationY);
+  map.SetMap();
   ptrMap = map.GetMap();
   for(int i =0;i<HEIGHT;i++){
     for(int j=0;j<WIDTH;j++){
@@ -107,11 +118,10 @@ void pathfinding(){
   }
   //calculate route
   route.SetRoute(&mapNew[0][0], 0,0, finishCoordinates[0][0], finishCoordinates[0][1]);
-  //print routeArray;
-  route.PrintRoute();*/
+  route.PrintRoute();
 
-  
-  while(1){
+  int turnCounter = 2;
+  while(route.GetstepInRouteCounter()/2 < route.GetSize()){
     //update the distanceSensor//
 /*    dirNouse = map.motor->GetCurrentDirection();
     std::cout << "dirNouse: " << dirNouse << std::endl;*/
@@ -123,20 +133,19 @@ void pathfinding(){
         mapNew[i][j]= *(ptrMap+(WIDTH*i)+j);
       }
     }
-    bool mapChanged =  map.CheckDifference(&mapNew[0][0], &mapOld[0][0]);
+    map.CheckDifference(&mapNew[0][0], &mapOld[0][0]);
     //check if map is changed
-    if(mapChanged){
+    if(map.GetChanged()){
       std::cout << "new route" << std::endl;
       for(int i =0;i<HEIGHT;i++){
         for(int j=0;j<WIDTH;j++){
           mapOld[i][j]= mapNew[i][j];
-          
         }
       }
 
       if(route.SetRoute(&mapOld[0][0], *map.motor->GetCurrentLocation(), *(map.motor->GetCurrentLocation()+1), 
-        finishCoordinates[routeCounter][0], finishCoordinates[routeCounter][1]) == 0){
-        exit(0);
+        finishCoordinates[route.GetRouteCounter()][0], finishCoordinates[route.GetRouteCounter()][1]) == 0){
+        //std::abort(); 
       }
     }else{
       std::cout << "same route" << std::endl;
@@ -155,23 +164,32 @@ void pathfinding(){
       motor.SetCurrentDirection((DirNouse)ownDir);
       sleep(2);
     #endif
-    #ifdef AUTOMATIC
-      map.motor->CalculateCurrentLocationWithRoute( route.GetRoute(), route.GetSize());
-      std::cout << "cur direction" << map.motor->GetCurrentDirection()<<std::endl;
-      std::cout << "cur location" << *map.motor->GetCurrentLocation() << "," << *(map.motor->GetCurrentLocation()+1) << std::endl;
-    #endif
+
+    map.motor->CalculateCurrentLocationWithRoute(route.GetRoute(), route.GetSize(),route.GetstepInRouteCounter());
+    //std::cout << "cur direction " << map.motor->GetCurrentDirection()<<std::endl;
+    //std::cout << "cur location " << *map.motor->GetCurrentLocation() << "," << *(map.motor->GetCurrentLocation()+1) << std::endl;
+    route.SetstepInRouteCounter(route.GetstepInRouteCounter()+2);
+    route.PrintstepInRouteCounter();
+    
     //turn 360 after three tiles
-	turnCounter --;
+    #ifdef TURN
+    turnCounter --;
+    std::cout << "turnCounter = ";
+    std::cout << turnCounter << std::endl;
     if(turnCounter==0){
-      motor.Drive(TURN360);
-      turnCounter = 2;
+        motor.Drive(TURN360);
+        turnCounter = 2;
     }
-    if(targetDetected){//if target is detected get cur location + front distanc sensor 
-        map.CalculateTargetLocation(routeCounter, *map.motor->GetCurrentLocation(),*(map.motor->GetCurrentLocation()+1),dirNouse);//front camera = +1
+    #endif
+    if(targetOffset != 0){//if target is detected get cur location + front distanc sensor 
+        map.CalculateTargetLocation(route.GetRouteCounter(), *map.motor->GetCurrentLocation(),*(map.motor->GetCurrentLocation()+1),dirNouse);//front camera = +1
+        targetOffset = 0;
     }
     //ask for target hit
-    if(map.GetTargetHit(routeCounter) && routeCounter < AMOUNT_LOCATIONS){
-      routeCounter++;
+    if(map.GetTargetHit(route.GetRouteCounter()) && route.GetRouteCounter() < AMOUNT_LOCATIONS){
+    	route.SetRouteCounter(route.GetRouteCounter()+1);//set route counter +1, new route
+		  route.SetstepInRouteCounter(0);//reset step in route counter because new route
+		//routeCounter++;
     }
     
   }
