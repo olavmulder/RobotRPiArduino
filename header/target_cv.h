@@ -1,5 +1,5 @@
-#ifndef TARGET
-#define TARGET
+#ifndef TARGETCV
+#define TARGETCV
 
 #include "opencv2/imgcodecs.hpp"
 #include "opencv2/highgui.hpp"

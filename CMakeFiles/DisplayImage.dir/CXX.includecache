@@ -133,6 +133,8 @@ opencv2/highgui.hpp
 /home/pi/oldversion/RobotRPiArduino/header/opencv2/highgui.hpp
 opencv2/imgproc.hpp
 /home/pi/oldversion/RobotRPiArduino/header/opencv2/imgproc.hpp
+../header/contouren.h
+/home/pi/oldversion/RobotRPiArduino/header/contouren.h
 iostream
 -
 cmath
@@ -189,4 +191,8 @@ fstream
 -
 thread
 -
+
+/home/pi/oldversion/RobotRPiArduino/src/target_cv.cpp
+../header/target_cv.h
+/home/pi/oldversion/RobotRPiArduino/header/target_cv.h
 

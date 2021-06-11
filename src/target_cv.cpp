@@ -58,7 +58,7 @@ int TargetCV::getOffset(){
 
 
 // public update (controller) methods
-TargetCV::Target_CV(vector<Point2f> groepje, int groepjesTeller, vector<int> lijst, int contoursGrootte, vector<vector<Point>> contours_poly){
+TargetCV::TargetCV(vector<Point2f> groepje, int groepjesTeller, vector<int> lijst, int contoursGrootte, vector<vector<Point>> contours_poly){
     this->groepje   = groepje;
     this->lijst     = lijst;
     this->groepjesTeller = groepjesTeller;

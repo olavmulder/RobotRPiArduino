@@ -1,7 +1,6 @@
 #include <iostream>
 #include <cmath>
 #include "../header/image.h"
-#include "../header/contouren.h"
 
 using namespace cv;
 using namespace std;
