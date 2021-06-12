@@ -5,7 +5,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/pi/oldversion/RobotRPiArduino/main.cpp" "/home/pi/oldversion/RobotRPiArduino/CMakeFiles/DisplayImage.dir/main.cpp.o"
-  "/home/pi/oldversion/RobotRPiArduino/src/DataCamera.cpp" "/home/pi/oldversion/RobotRPiArduino/CMakeFiles/DisplayImage.dir/src/DataCamera.cpp.o"
   "/home/pi/oldversion/RobotRPiArduino/src/DistanceSensor.cpp" "/home/pi/oldversion/RobotRPiArduino/CMakeFiles/DisplayImage.dir/src/DistanceSensor.cpp.o"
   "/home/pi/oldversion/RobotRPiArduino/src/I2C.cpp" "/home/pi/oldversion/RobotRPiArduino/CMakeFiles/DisplayImage.dir/src/I2C.cpp.o"
   "/home/pi/oldversion/RobotRPiArduino/src/Location.cpp" "/home/pi/oldversion/RobotRPiArduino/CMakeFiles/DisplayImage.dir/src/Location.cpp.o"

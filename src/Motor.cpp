@@ -113,7 +113,7 @@ void Motor::CalculateCurrentLocationWithRoute(int *array, int size, int counter)
                 Drive(FORWARD);
             }
             if(direction == WEST){
-                Drive(TURN360);
+                Drive(TURN180);
                 Drive(FORWARD);
             }
             direction = EAST;
@@ -121,7 +121,7 @@ void Motor::CalculateCurrentLocationWithRoute(int *array, int size, int counter)
         }
         if(newY > oldY){//robot down
             if(direction == NORTH){
-                Drive(TURN360);
+                Drive(TURN180);
                 Drive(FORWARD);
             }
             if(direction == EAST){
@@ -144,7 +144,7 @@ void Motor::CalculateCurrentLocationWithRoute(int *array, int size, int counter)
                 Drive(FORWARD);
             }
             if(direction == EAST){
-                Drive(TURN360);  
+                Drive(TURN180);  
                 Drive(FORWARD);            
             }
             if(direction == SOUTH){
@@ -165,7 +165,7 @@ void Motor::CalculateCurrentLocationWithRoute(int *array, int size, int counter)
                 Drive(FORWARD); 
             }
             if(direction == SOUTH){
-                Drive(TURN360);  
+                Drive(TURN180);  
                 Drive(FORWARD);     
             }
             if(direction == WEST){

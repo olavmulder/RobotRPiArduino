@@ -150,33 +150,6 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-src/DataCamera.o: src/DataCamera.cpp.o
-
-.PHONY : src/DataCamera.o
-
-# target to build an object file
-src/DataCamera.cpp.o:
-	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/src/DataCamera.cpp.o
-.PHONY : src/DataCamera.cpp.o
-
-src/DataCamera.i: src/DataCamera.cpp.i
-
-.PHONY : src/DataCamera.i
-
-# target to preprocess a source file
-src/DataCamera.cpp.i:
-	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/src/DataCamera.cpp.i
-.PHONY : src/DataCamera.cpp.i
-
-src/DataCamera.s: src/DataCamera.cpp.s
-
-.PHONY : src/DataCamera.s
-
-# target to generate assembly for a file
-src/DataCamera.cpp.s:
-	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/src/DataCamera.cpp.s
-.PHONY : src/DataCamera.cpp.s
-
 src/DistanceSensor.o: src/DistanceSensor.cpp.o
 
 .PHONY : src/DistanceSensor.o
@@ -513,9 +486,6 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... src/DataCamera.o"
-	@echo "... src/DataCamera.i"
-	@echo "... src/DataCamera.s"
 	@echo "... src/DistanceSensor.o"
 	@echo "... src/DistanceSensor.i"
 	@echo "... src/DistanceSensor.s"

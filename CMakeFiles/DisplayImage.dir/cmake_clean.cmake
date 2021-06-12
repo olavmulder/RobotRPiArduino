@@ -1,6 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/DisplayImage.dir/main.cpp.o"
-  "CMakeFiles/DisplayImage.dir/src/DataCamera.cpp.o"
   "CMakeFiles/DisplayImage.dir/src/DistanceSensor.cpp.o"
   "CMakeFiles/DisplayImage.dir/src/I2C.cpp.o"
   "CMakeFiles/DisplayImage.dir/src/Location.cpp.o"

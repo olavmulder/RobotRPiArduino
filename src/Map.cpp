@@ -12,6 +12,7 @@ Map::Map(Motor *mot, int amountTarget){
     target.resize(amountTargets);
     ds.resize(3);
     changed = false;
+    
 }
 void Map::SetChanged(bool status){
     changed = status;
@@ -24,6 +25,9 @@ int* Map::GetTargetLocation(int id){
 }
 bool Map::GetTargetHit(int id){
     return target.at(id).GetHit();
+}
+void Map::SetTargetHit(int id){
+    target.at(id).SetHit();
 }
 void Map::CalculateTargetLocation(int id, int x, int y, DirNouse dir){
 

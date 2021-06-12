@@ -70,22 +70,9 @@ CMakeFiles/DisplayImage.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/DisplayImage.dir/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/oldversion/RobotRPiArduino/main.cpp -o CMakeFiles/DisplayImage.dir/main.cpp.s
 
-CMakeFiles/DisplayImage.dir/src/DataCamera.cpp.o: CMakeFiles/DisplayImage.dir/flags.make
-CMakeFiles/DisplayImage.dir/src/DataCamera.cpp.o: src/DataCamera.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/oldversion/RobotRPiArduino/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/DisplayImage.dir/src/DataCamera.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/DisplayImage.dir/src/DataCamera.cpp.o -c /home/pi/oldversion/RobotRPiArduino/src/DataCamera.cpp
-
-CMakeFiles/DisplayImage.dir/src/DataCamera.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/DisplayImage.dir/src/DataCamera.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/oldversion/RobotRPiArduino/src/DataCamera.cpp > CMakeFiles/DisplayImage.dir/src/DataCamera.cpp.i
-
-CMakeFiles/DisplayImage.dir/src/DataCamera.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/DisplayImage.dir/src/DataCamera.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/oldversion/RobotRPiArduino/src/DataCamera.cpp -o CMakeFiles/DisplayImage.dir/src/DataCamera.cpp.s
-
 CMakeFiles/DisplayImage.dir/src/DistanceSensor.cpp.o: CMakeFiles/DisplayImage.dir/flags.make
 CMakeFiles/DisplayImage.dir/src/DistanceSensor.cpp.o: src/DistanceSensor.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/oldversion/RobotRPiArduino/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/DisplayImage.dir/src/DistanceSensor.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/oldversion/RobotRPiArduino/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/DisplayImage.dir/src/DistanceSensor.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/DisplayImage.dir/src/DistanceSensor.cpp.o -c /home/pi/oldversion/RobotRPiArduino/src/DistanceSensor.cpp
 
 CMakeFiles/DisplayImage.dir/src/DistanceSensor.cpp.i: cmake_force
@@ -98,7 +85,7 @@ CMakeFiles/DisplayImage.dir/src/DistanceSensor.cpp.s: cmake_force
 
 CMakeFiles/DisplayImage.dir/src/I2C.cpp.o: CMakeFiles/DisplayImage.dir/flags.make
 CMakeFiles/DisplayImage.dir/src/I2C.cpp.o: src/I2C.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/oldversion/RobotRPiArduino/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/DisplayImage.dir/src/I2C.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/oldversion/RobotRPiArduino/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/DisplayImage.dir/src/I2C.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/DisplayImage.dir/src/I2C.cpp.o -c /home/pi/oldversion/RobotRPiArduino/src/I2C.cpp
 
 CMakeFiles/DisplayImage.dir/src/I2C.cpp.i: cmake_force
@@ -111,7 +98,7 @@ CMakeFiles/DisplayImage.dir/src/I2C.cpp.s: cmake_force
 
 CMakeFiles/DisplayImage.dir/src/Location.cpp.o: CMakeFiles/DisplayImage.dir/flags.make
 CMakeFiles/DisplayImage.dir/src/Location.cpp.o: src/Location.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/oldversion/RobotRPiArduino/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/DisplayImage.dir/src/Location.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/oldversion/RobotRPiArduino/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/DisplayImage.dir/src/Location.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/DisplayImage.dir/src/Location.cpp.o -c /home/pi/oldversion/RobotRPiArduino/src/Location.cpp
 
 CMakeFiles/DisplayImage.dir/src/Location.cpp.i: cmake_force
@@ -124,7 +111,7 @@ CMakeFiles/DisplayImage.dir/src/Location.cpp.s: cmake_force
 
 CMakeFiles/DisplayImage.dir/src/Map.cpp.o: CMakeFiles/DisplayImage.dir/flags.make
 CMakeFiles/DisplayImage.dir/src/Map.cpp.o: src/Map.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/oldversion/RobotRPiArduino/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/DisplayImage.dir/src/Map.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/oldversion/RobotRPiArduino/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/DisplayImage.dir/src/Map.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/DisplayImage.dir/src/Map.cpp.o -c /home/pi/oldversion/RobotRPiArduino/src/Map.cpp
 
 CMakeFiles/DisplayImage.dir/src/Map.cpp.i: cmake_force
@@ -137,7 +124,7 @@ CMakeFiles/DisplayImage.dir/src/Map.cpp.s: cmake_force
 
 CMakeFiles/DisplayImage.dir/src/Motor.cpp.o: CMakeFiles/DisplayImage.dir/flags.make
 CMakeFiles/DisplayImage.dir/src/Motor.cpp.o: src/Motor.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/oldversion/RobotRPiArduino/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/DisplayImage.dir/src/Motor.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/oldversion/RobotRPiArduino/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/DisplayImage.dir/src/Motor.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/DisplayImage.dir/src/Motor.cpp.o -c /home/pi/oldversion/RobotRPiArduino/src/Motor.cpp
 
 CMakeFiles/DisplayImage.dir/src/Motor.cpp.i: cmake_force
@@ -150,7 +137,7 @@ CMakeFiles/DisplayImage.dir/src/Motor.cpp.s: cmake_force
 
 CMakeFiles/DisplayImage.dir/src/Route.cpp.o: CMakeFiles/DisplayImage.dir/flags.make
 CMakeFiles/DisplayImage.dir/src/Route.cpp.o: src/Route.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/oldversion/RobotRPiArduino/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/DisplayImage.dir/src/Route.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/oldversion/RobotRPiArduino/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/DisplayImage.dir/src/Route.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/DisplayImage.dir/src/Route.cpp.o -c /home/pi/oldversion/RobotRPiArduino/src/Route.cpp
 
 CMakeFiles/DisplayImage.dir/src/Route.cpp.i: cmake_force
@@ -163,7 +150,7 @@ CMakeFiles/DisplayImage.dir/src/Route.cpp.s: cmake_force
 
 CMakeFiles/DisplayImage.dir/src/Target.cpp.o: CMakeFiles/DisplayImage.dir/flags.make
 CMakeFiles/DisplayImage.dir/src/Target.cpp.o: src/Target.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/oldversion/RobotRPiArduino/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/DisplayImage.dir/src/Target.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/oldversion/RobotRPiArduino/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/DisplayImage.dir/src/Target.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/DisplayImage.dir/src/Target.cpp.o -c /home/pi/oldversion/RobotRPiArduino/src/Target.cpp
 
 CMakeFiles/DisplayImage.dir/src/Target.cpp.i: cmake_force
@@ -176,7 +163,7 @@ CMakeFiles/DisplayImage.dir/src/Target.cpp.s: cmake_force
 
 CMakeFiles/DisplayImage.dir/src/contouren.cpp.o: CMakeFiles/DisplayImage.dir/flags.make
 CMakeFiles/DisplayImage.dir/src/contouren.cpp.o: src/contouren.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/oldversion/RobotRPiArduino/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/DisplayImage.dir/src/contouren.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/oldversion/RobotRPiArduino/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/DisplayImage.dir/src/contouren.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/DisplayImage.dir/src/contouren.cpp.o -c /home/pi/oldversion/RobotRPiArduino/src/contouren.cpp
 
 CMakeFiles/DisplayImage.dir/src/contouren.cpp.i: cmake_force
@@ -189,7 +176,7 @@ CMakeFiles/DisplayImage.dir/src/contouren.cpp.s: cmake_force
 
 CMakeFiles/DisplayImage.dir/src/draw.cpp.o: CMakeFiles/DisplayImage.dir/flags.make
 CMakeFiles/DisplayImage.dir/src/draw.cpp.o: src/draw.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/oldversion/RobotRPiArduino/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/DisplayImage.dir/src/draw.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/oldversion/RobotRPiArduino/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/DisplayImage.dir/src/draw.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/DisplayImage.dir/src/draw.cpp.o -c /home/pi/oldversion/RobotRPiArduino/src/draw.cpp
 
 CMakeFiles/DisplayImage.dir/src/draw.cpp.i: cmake_force
@@ -202,7 +189,7 @@ CMakeFiles/DisplayImage.dir/src/draw.cpp.s: cmake_force
 
 CMakeFiles/DisplayImage.dir/src/grouping.cpp.o: CMakeFiles/DisplayImage.dir/flags.make
 CMakeFiles/DisplayImage.dir/src/grouping.cpp.o: src/grouping.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/oldversion/RobotRPiArduino/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/DisplayImage.dir/src/grouping.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/oldversion/RobotRPiArduino/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/DisplayImage.dir/src/grouping.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/DisplayImage.dir/src/grouping.cpp.o -c /home/pi/oldversion/RobotRPiArduino/src/grouping.cpp
 
 CMakeFiles/DisplayImage.dir/src/grouping.cpp.i: cmake_force
@@ -215,7 +202,7 @@ CMakeFiles/DisplayImage.dir/src/grouping.cpp.s: cmake_force
 
 CMakeFiles/DisplayImage.dir/src/image.cpp.o: CMakeFiles/DisplayImage.dir/flags.make
 CMakeFiles/DisplayImage.dir/src/image.cpp.o: src/image.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/oldversion/RobotRPiArduino/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/DisplayImage.dir/src/image.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/oldversion/RobotRPiArduino/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/DisplayImage.dir/src/image.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/DisplayImage.dir/src/image.cpp.o -c /home/pi/oldversion/RobotRPiArduino/src/image.cpp
 
 CMakeFiles/DisplayImage.dir/src/image.cpp.i: cmake_force
@@ -228,7 +215,7 @@ CMakeFiles/DisplayImage.dir/src/image.cpp.s: cmake_force
 
 CMakeFiles/DisplayImage.dir/src/target_cv.cpp.o: CMakeFiles/DisplayImage.dir/flags.make
 CMakeFiles/DisplayImage.dir/src/target_cv.cpp.o: src/target_cv.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/oldversion/RobotRPiArduino/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/DisplayImage.dir/src/target_cv.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/oldversion/RobotRPiArduino/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/DisplayImage.dir/src/target_cv.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/DisplayImage.dir/src/target_cv.cpp.o -c /home/pi/oldversion/RobotRPiArduino/src/target_cv.cpp
 
 CMakeFiles/DisplayImage.dir/src/target_cv.cpp.i: cmake_force
@@ -242,7 +229,6 @@ CMakeFiles/DisplayImage.dir/src/target_cv.cpp.s: cmake_force
 # Object files for target DisplayImage
 DisplayImage_OBJECTS = \
 "CMakeFiles/DisplayImage.dir/main.cpp.o" \
-"CMakeFiles/DisplayImage.dir/src/DataCamera.cpp.o" \
 "CMakeFiles/DisplayImage.dir/src/DistanceSensor.cpp.o" \
 "CMakeFiles/DisplayImage.dir/src/I2C.cpp.o" \
 "CMakeFiles/DisplayImage.dir/src/Location.cpp.o" \
@@ -260,7 +246,6 @@ DisplayImage_OBJECTS = \
 DisplayImage_EXTERNAL_OBJECTS =
 
 DisplayImage: CMakeFiles/DisplayImage.dir/main.cpp.o
-DisplayImage: CMakeFiles/DisplayImage.dir/src/DataCamera.cpp.o
 DisplayImage: CMakeFiles/DisplayImage.dir/src/DistanceSensor.cpp.o
 DisplayImage: CMakeFiles/DisplayImage.dir/src/I2C.cpp.o
 DisplayImage: CMakeFiles/DisplayImage.dir/src/Location.cpp.o
@@ -317,7 +302,7 @@ DisplayImage: /usr/lib/arm-linux-gnueabihf/libopencv_imgcodecs.so.3.2.0
 DisplayImage: /usr/lib/arm-linux-gnueabihf/libopencv_imgproc.so.3.2.0
 DisplayImage: /usr/lib/arm-linux-gnueabihf/libopencv_core.so.3.2.0
 DisplayImage: CMakeFiles/DisplayImage.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pi/oldversion/RobotRPiArduino/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX executable DisplayImage"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pi/oldversion/RobotRPiArduino/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable DisplayImage"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/DisplayImage.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

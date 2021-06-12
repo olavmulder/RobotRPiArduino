@@ -26,7 +26,7 @@ class Map{
         int amountTargets;
         bool changed;
     public:
-
+        
         Motor *motor;
         Map(Motor *motor,int amountTarget);
         //map
@@ -37,6 +37,7 @@ class Map{
         //target
         int* GetTargetLocation(int id);
         bool GetTargetHit(int id);
+        void SetTargetHit(int id);
         void CalculateTargetLocation(int id, int x, int y, DirNouse dir);
         void SetChanged(bool status);
         bool GetChanged();
