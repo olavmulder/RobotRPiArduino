@@ -38,11 +38,6 @@ using namespace std;
 
 //#define TURN
 
-/*
-Mat src_gray;
-Mat img;
-int thresh = 100;
-RNG rng(12345);*/
 
 /*
  V  draaien om de 3 tegels
@@ -100,16 +95,14 @@ void pathfinding(){
     {0,0}//top left corner
   };
   
-  DirNouse dirNouse;/*= EAST*/;
+  DirNouse dirNouse;
 
   //init map variables
   int mapNew[HEIGHT][WIDTH];
   int mapOld[HEIGHT][WIDTH];
   int *ptrMap;
   //current location
-  
-  //int distance sensor
- // int *distanceSensorArray = NULL;
+
   //set map
   map.SetMap();
   ptrMap = map.GetMap();
@@ -125,9 +118,6 @@ void pathfinding(){
   int turnCounter = 2;
   for(unsigned char i=0;i<AMOUNT_LOCATIONS;i++){
     while(/*1*/route.GetstepInRouteCounter()/2 < route.GetSize()){
-      //update the distanceSensor//
-  /*    dirNouse = map.motor->GetCurrentDirection();
-      std::cout << "dirNouse: " << dirNouse << std::endl;*/
       //update map
       map.SetMap();
       ptrMap = map.GetMap();
@@ -184,12 +174,15 @@ void pathfinding(){
         turnCounter = 2;
       }
       #endif
-      while(targetOffset != 0 && !map.GetTargetHit(route.GetRouteCounter())){//if target is detected get cur location + front distanc sensor
+      while(targetOffset != 0 && !map.GetTargetHit(route.GetRouteCounter()) && *map.GetTargetLocation(route.GetRouteCounter() != -1)){//if target is detected get cur location + front distanc sensor
         map.CalculateTargetLocation(route.GetRouteCounter(), *map.motor->GetCurrentLocation(),*(map.motor->GetCurrentLocation()+1),map.motor->GetCurrentDirection());//front camera = +1
-        route.SetRouteCounter(route.GetRouteCounter()+1);//set route counter +1, new route
         route.SetstepInRouteCounter(0);//reset step in route counter because new route
         //map.SetTargetHit(route.GetRouteCounter());
+        
         targetOffset = 0;
+      }
+      if(map.GetTargetHit(route.GetRouteCounter())){
+        route.SetRouteCounter(route.GetRouteCounter()+1);//set route counter +1, new route
       }
     }
   }

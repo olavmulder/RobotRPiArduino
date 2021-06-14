@@ -26,7 +26,7 @@ void Target::CalculateTargetLocation(int curX, int curY, DirNouse dirNouse, int 
     int startAngle = i2c.ReadBytes();
     int angle;
     i2c.CloseBus();
-
+    printf("targetOFfset in Calculate: %d\n",targetOffset);
     while(targetOffset != 0 && !GetHit()){
         if(targetOffset < -10){   
             motor.Drive(RIGHT);
@@ -89,7 +89,6 @@ void Target::CalculateTargetLocation(int curX, int curY, DirNouse dirNouse, int 
                 if(angle < -90 && angle == -180){//x++ y--
                     targetLocationArray.SetLocation(curX+tilesXas, curY-tilesXas);
                 }
-                
             }
             if(dirNouse == WEST){
                 if(angle > 0 && angle <= 90){//x-- y--
