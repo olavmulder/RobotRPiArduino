@@ -50,6 +50,7 @@ void pathfinding();
 void openCV();
 //global state:
 bool targetDetected =false;
+int targetOffset;
 
 int main() {
 
@@ -117,8 +118,9 @@ void pathfinding(){
     while(/*1*/route.GetstepInRouteCounter()/2 < route.GetSize()){
       //update map
 
-      while(targetOffset != 0 && !map.GetTargetHit(0/*route.GetRouteCounter()*/) && *map.GetTargetLocation(0/*route.GetRouteCounter()*/) == -1)){//if target is detected get cur location + front distanc sensor
+      while(targetOffset != 0 /*&& !map.GetTargetHit(0route.GetRouteCounter()) && *map.GetTargetLocation(0/*route.GetRouteCounter()) == -1)*/){//if target is detected get cur location + front distanc sensor
         printf("in while loop targetoffset\n");
+        map.SetTargetOffset(0,targetOffset);
         map.CalculateTargetLocation(0, *map.motor->GetCurrentLocation(),*(map.motor->GetCurrentLocation()+1),map.motor->GetCurrentDirection());//front camera = +1
         route.SetstepInRouteCounter(0);//reset step in route counter because new route
         //map.SetTargetHit(route.GetRouteCounter());

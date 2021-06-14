@@ -12,8 +12,11 @@ class Target{
         bool targetHit;
         int locArr[2];
         Motor motor;
+        int offset;
     public:
         Target();
+        void SetTargetOffset(int);
+        int GetTargetOffset();
         void SetHit();
         bool GetHit();
         int* GetTargetLocation();

@@ -8,7 +8,7 @@
     typedef enum{
         NORTH, EAST, SOUTH, WEST
     }DirNouse;
-    static int targetOffset;
+    
 
     #define WIDTH 5
     #define HEIGHT 5

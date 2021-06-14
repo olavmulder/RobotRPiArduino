@@ -38,6 +38,7 @@ class Map{
         int* GetTargetLocation(int id);
         bool GetTargetHit(int id);
         void SetTargetHit(int id);
+        void SetTargetOffset(int id, int offset);
         void CalculateTargetLocation(int id, int x, int y, DirNouse dir);
         void SetChanged(bool status);
         bool GetChanged();

@@ -20,6 +20,9 @@ void Map::SetChanged(bool status){
 bool Map::GetChanged(){
     return changed;
 }
+void Map::SetTargetOffset(int id,int offset){
+    target.at(id).SetTargetOffset(offset);
+}
 int* Map::GetTargetLocation(int id){
   return target.at(id).GetTargetLocation();
 }

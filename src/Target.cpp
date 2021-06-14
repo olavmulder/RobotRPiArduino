@@ -3,6 +3,12 @@
 Target::Target(){
     SetTargetLocation(-1,-1);
 }
+void SetOffset(int targetOffset){
+    offset = targetOffset;
+}
+int GetOffset(){
+    return offset;
+}
 void Target::SetHit(){
     targetHit = true;
 }
@@ -26,16 +32,16 @@ void Target::CalculateTargetLocation(int curX, int curY, DirNouse dirNouse, int 
     int startAngle = i2c.ReadBytes();
     int angle;
     i2c.CloseBus();
-    printf("targetOffset in Calculate: %d\n",targetOffset);
-    while(targetOffset != 0 && !GetHit()){
+    printf("targetOffset in Calculate: %d\n",offset);
+    while(offset != 0 && !GetHit()){
         printf("while loop calculateTargetlocation");
-        if(targetOffset < -10){   
+        if(offset < -10){   
             motor.Drive(RIGHT);
         }
-        if(targetOffset > 10){
+        if(offset > 10){
             motor.Drive(LEFT);
         }
-        if(targetOffset >= -10 && targetOffset <= 10){
+        if(offset >= -10 && offset <= 10){
             //fire
             i2c.OpenBus();
             i2c.WriteBytes(11);//ask angle ;
