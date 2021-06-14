@@ -11,16 +11,15 @@ class Target{
         Location targetLocationArray;
         bool targetHit;
         int locArr[2];
+        
         Motor motor;
     public:
         Target();
-       /* void SetTargetOffset(int);
-        int GetTargetOffset();*/
         void SetHit();
         bool GetHit();
         int* GetTargetLocation();
         void SetTargetLocation(int x, int y);
-        void CalculateTargetLocation(int curX, int curY, DirNouse, int distance, int tileSize);
+        void CalculateTargetLocation(int curX, int curY, DirNouse, int distance, int tileSize, int *offset);
 };
 
 #endif

@@ -28,21 +28,19 @@ void Map::SetChanged(bool status){
 bool Map::GetChanged(){
     return changed;
 }
-void Map::SetTargetOffset(Color id,int offset){
-    target.at((int)id).SetTargetOffset(offset);
+
+int* Map::GetTargetLocation(int id){
+  return target.at(id).GetTargetLocation();
 }
-int* Map::GetTargetLocation(Color id){
-  return target.at((int)id).GetTargetLocation();
+bool Map::GetTargetHit(Color *id){
+    return target.at(*id).GetHit();
 }
-bool Map::GetTargetHit(Color id){
-    return target.at((int)id).GetHit();
+void Map::SetTargetHit(Color *id){
+    target.at(*id).SetHit();
 }
-void Map::SetTargetHit(Color id){
-    target.at((int)id).SetHit();
-}
-void Map::CalculateTargetLocation(Color id, int x, int y, DirNouse dir, int* offset){
+void Map::CalculateTargetLocation(Color *id, int x, int y, DirNouse dir, int* offset){
     
-    target.at(id).CalculateTargetLocation(x,y,dir,arrayDistanceValues[1],TILE_SIZE, offset);
+    target.at(*id).CalculateTargetLocation(x,y,dir,arrayDistanceValues[1],TILE_SIZE, offset);
 }
 void Map::SetDistanceArray(){
     for(uint8_t i=0;i<3;i++){
@@ -66,9 +64,7 @@ void Map::SetMap(){
     int *y = x+1;
     //get current direction
     DirNouse dir = motor->GetCurrentDirection();
-    //std::cout << "dirNouse: " << dir << std::endl;
-
-
+    
     //convert ds distance to amount of tiles;
     int tileDistanceA=1, tileDistanceB=1, tileDistanceC=1;//three var to store amount tiles to block 
     bool state= true;
@@ -91,7 +87,6 @@ void Map::SetMap(){
 
     int numberInMap = *x+(*y * WIDTH);
     int i = 1;
-    //printf("tileA:%d, tileB:%d, tileC:%d\n", tileDistanceA, tileDistanceB, tileDistanceC);
     if(dir == NORTH){//0= west, 1 = north, 2 = east
         if((numberInMap-tileDistanceA>= 0) && (numberInMap-tileDistanceA < WIDTH*HEIGHT)){//stay in map memory
             if(*x - tileDistanceA > 0 ){//prevent going out of field

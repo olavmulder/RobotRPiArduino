@@ -42,17 +42,15 @@ using namespace std;
         twee waardes sturen? 0 & 1 daarna waarde, 1 positief, 0 negatief
 */
 
-void pathfinding();
-void openCV();
+void pathfinding(int*, Color*);
+void openCV(int*, Color*);
 
 int main() {
-  Color idTarget;
-  Color *id = &idTarget;
-  int offsetTarget;
-  int *offset = &offsetTarget;
-
-  std::thread path(pathfinding, offset, id);
-  std::thread cv(openCV, offset, id);
+  
+  Color id;
+  int offset = 1;
+  std::thread path(pathfinding, &offset, &id);
+  std::thread cv(openCV, &offset, &id);
   path.join();
   cv.join();
   return 0;
@@ -71,8 +69,9 @@ void openCV(int* offset, Color *id){
 	  TargetCV TargetCV(Grouping.getTotalGroup(), Grouping.getGroupCounter(), Grouping.getArray(), Contouren.getContourSize(), Contouren.getContoursPoly());
 		Draw Draw(Contouren.getContoursPoly(), TargetCV.getTargetGroups(), Contouren.getProcessed());*/
 		
-		*offset = 345;//TargetCV.getOffset();
+		*offset= *offset+1;//TargetCV.getOffset();
     *id = (Color)1;//TargetCV.getColor();
+    sleep(5);
 		waitKey(1);
   }
 
@@ -128,12 +127,11 @@ void pathfinding(int* offset, Color *id){
 
       map.SetDistanceArray();//update distance values
 
-      if(*offset != 0){//if target is detected get cur location + front distanc sensor
+      if(*offset != 0){//if target is detected
         //check color/id
         printf("color: %d\n", *id);
-        if(!map.GetTargetHit(*id)){//if detected color is already hit, skip this
-          map.SetTargetOffset(*id,targetOffset);
-          map.CalculateTargetLocation(*id, *map.motor->GetCurrentLocation(),*(map.motor->GetCurrentLocation()+1),map.motor->GetCurrentDirection());//front camera = +1
+        if(!map.GetTargetHit(id)){//if detected color is already hit, skip this
+          map.CalculateTargetLocation(id, *map.motor->GetCurrentLocation(),*(map.motor->GetCurrentLocation()+1),map.motor->GetCurrentDirection(), offset);//front camera = +1
 
         }else{
           printf("current id is already hit\n");
