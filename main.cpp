@@ -4,9 +4,6 @@
 #include "header/I2c.h"
 #include "header/enumVar.h"
 
-/*
-look at two times staring point in route array
-*/
 #include "opencv2/imgcodecs.hpp"
 #include "opencv2/highgui.hpp"
 #include "opencv2/imgproc.hpp"
@@ -119,6 +116,15 @@ void pathfinding(){
   for(unsigned char i=0;i<AMOUNT_LOCATIONS;i++){
     while(/*1*/route.GetstepInRouteCounter()/2 < route.GetSize()){
       //update map
+
+      while(targetOffset != 0 && !map.GetTargetHit(0/*route.GetRouteCounter()*/) && *map.GetTargetLocation(0/*route.GetRouteCounter()*/) == -1)){//if target is detected get cur location + front distanc sensor
+        printf("in while loop targetoffset\n");
+        map.CalculateTargetLocation(0, *map.motor->GetCurrentLocation(),*(map.motor->GetCurrentLocation()+1),map.motor->GetCurrentDirection());//front camera = +1
+        route.SetstepInRouteCounter(0);//reset step in route counter because new route
+        //map.SetTargetHit(route.GetRouteCounter());
+        //targetOffset = 0;
+      }
+
       map.SetMap();
       ptrMap = map.GetMap();
       for(int i =0;i<HEIGHT;i++){
@@ -166,20 +172,15 @@ void pathfinding(){
       
       //turn 360 after three tiles
       #ifdef TURN
-      turnCounter --;
-      std::cout << "turnCounter = ";
-      std::cout << turnCounter << std::endl;
-      if(turnCounter==0){
-        motor.Drive(TURN360);
-        turnCounter = 2;
-      }
+        turnCounter --;
+        std::cout << "turnCounter = ";
+        std::cout << turnCounter << std::endl;
+        if(turnCounter==0){
+          motor.Drive(TURN360);
+          turnCounter = 2;
+        }
       #endif
-      while(targetOffset != 0 && !map.GetTargetHit(0/*route.GetRouteCounter()*/) && *map.GetTargetLocation(0/*route.GetRouteCounter()*/) == -1)){//if target is detected get cur location + front distanc sensor
-        map.CalculateTargetLocation(0, *map.motor->GetCurrentLocation(),*(map.motor->GetCurrentLocation()+1),map.motor->GetCurrentDirection());//front camera = +1
-        route.SetstepInRouteCounter(0);//reset step in route counter because new route
-        //map.SetTargetHit(route.GetRouteCounter());
-        targetOffset = 0;
-      }
+      
       /*if(map.GetTargetHit(route.GetRouteCounter())){
         route.SetRouteCounter(route.GetRouteCounter()+1);//set route counter +1, new route
       }*/
