@@ -36,7 +36,7 @@ using namespace std;
 
 
 
-//#define TURN
+#define TURN
 
 
 /*
@@ -137,7 +137,7 @@ void pathfinding(){
         }
 
         if(route.SetRoute(&mapOld[0][0], *map.motor->GetCurrentLocation(), *(map.motor->GetCurrentLocation()+1), 
-          finishCoordinates[route.GetRouteCounter()][0], finishCoordinates[route.GetRouteCounter()][1]) == 0){
+          finishCoordinates[/*route.GetRouteCounter()*/0][0], finishCoordinates[route./*GetRouteCounter()*/0][1]) == 0){
           //std::abort(); 
         }
       }else{
@@ -174,16 +174,15 @@ void pathfinding(){
         turnCounter = 2;
       }
       #endif
-      while(targetOffset != 0 && !map.GetTargetHit(route.GetRouteCounter()) && *map.GetTargetLocation(route.GetRouteCounter() != -1)){//if target is detected get cur location + front distanc sensor
-        map.CalculateTargetLocation(route.GetRouteCounter(), *map.motor->GetCurrentLocation(),*(map.motor->GetCurrentLocation()+1),map.motor->GetCurrentDirection());//front camera = +1
+      while(targetOffset != 0 && !map.GetTargetHit(0/*route.GetRouteCounter()*/) && *map.GetTargetLocation(0/*route.GetRouteCounter()*/) == -1)){//if target is detected get cur location + front distanc sensor
+        map.CalculateTargetLocation(0, *map.motor->GetCurrentLocation(),*(map.motor->GetCurrentLocation()+1),map.motor->GetCurrentDirection());//front camera = +1
         route.SetstepInRouteCounter(0);//reset step in route counter because new route
         //map.SetTargetHit(route.GetRouteCounter());
-        
         targetOffset = 0;
       }
-      if(map.GetTargetHit(route.GetRouteCounter())){
+      /*if(map.GetTargetHit(route.GetRouteCounter())){
         route.SetRouteCounter(route.GetRouteCounter()+1);//set route counter +1, new route
-      }
+      }*/
     }
   }
 }
