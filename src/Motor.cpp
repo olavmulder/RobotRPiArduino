@@ -102,80 +102,113 @@ void Motor::CalculateCurrentLocationWithRoute(int *array, int size, int counter)
 
         if(newX > oldX){//robot RIGHT90
             if(direction == NORTH){
-                Drive(RIGHT90);
-                Drive(FORWARD);  
+                /*Drive(RIGHT90);
+                Drive(FORWARD);*/
+                printf("right 90\n");
+                printf("forward\n");
             }
             if(direction == EAST){
-                Drive(FORWARD);
+                //Drive(FORWARD);
+                printf("forward\n");
+
             }
             if(direction == SOUTH){
-                Drive(LEFT90);
-                Drive(FORWARD);
+                /*Drive(LEFT90);
+                Drive(FORWARD);*/
+                printf("forward\n");
+
             }
             if(direction == WEST){
-                Drive(TURN180);
-                Drive(FORWARD);
+                /*Drive(TURN180);
+                Drive(FORWARD);*/
+                printf("turn 180\n");
+                printf("forward\n");
             }
             direction = EAST;
+            printf("direction is EAST\n");
             
         }
         if(newY > oldY){//robot down
             if(direction == NORTH){
-                Drive(TURN180);
-                Drive(FORWARD);
+                /*Drive(TURN180);
+                Drive(FORWARD);*/
+                printf("TURN 180\n");
+                printf("forward\n");
             }
             if(direction == EAST){
-                Drive(RIGHT90);
-                Drive(FORWARD);
+                /*Drive(RIGHT90);
+                Drive(FORWARD);*/
+                printf("right 90\n");
+                printf("forward\n");
             }
             if(direction == SOUTH){
-                Drive(FORWARD);
+               // Drive(FORWARD);
+                printf("forward\n");
             }
             if(direction == WEST){
-                Drive(LEFT90);
-                Drive(FORWARD);
+                // Drive(LEFT90);
+                // Drive(FORWARD);
+                printf("left 90\n");
+                printf("forward\n");
             }
             direction = SOUTH;
+            printf("direction = south\n");
 
         }
         if(newX < oldX){//robot LEFT
             if(direction == NORTH){
-                Drive(LEFT90);
-                Drive(FORWARD);
+                // Drive(LEFT90);
+                // Drive(FORWARD);
+                printf("left 90\n");
+                printf("forward\n");
             }
             if(direction == EAST){
-                Drive(TURN180);  
-                Drive(FORWARD);            
+                // Drive(TURN180);  
+                // Drive(FORWARD);  
+                printf("right 180\n");
+                printf("forward\n");          
             }
             if(direction == SOUTH){
-                Drive(RIGHT90);
-                Drive(FORWARD);     
+                // Drive(RIGHT90);
+                // Drive(FORWARD); 
+                printf("right 90\n");
+                printf("forward\n");    
             }
             if(direction == WEST){
-                Drive(FORWARD);
+                //Drive(FORWARD);
+                printf("forward\n");
             }
             direction = WEST;
+            printf("direction = west\n");
         }
         if(newY < oldY){//robot up
             if(direction == NORTH){
-                Drive(FORWARD);
+                //Drive(FORWARD);
+                printf("forward\n");
             }
             if(direction == EAST){
-                Drive(LEFT90);
-                Drive(FORWARD); 
+                // Drive(LEFT90);
+                // Drive(FORWARD); 
+                printf("left 90\n");
+                printf("forward\n");    
             }
             if(direction == SOUTH){
-                Drive(TURN180);  
-                Drive(FORWARD);     
+                // Drive(TURN180);  
+                // Drive(FORWARD);  
+                printf("right 180\n");
+                printf("forward\n");       
             }
             if(direction == WEST){
-                Drive(RIGHT90);
-                Drive(FORWARD);
+                // Drive(RIGHT90);
+                // Drive(FORWARD);
+                printf("right 90\n");
+                printf("forward\n");    
             }
             direction = NORTH;
+            printf("direction = north\n");
         }
         currentLocation.SetLocation(newX, newY);
-        sleep(1);
+        sleep(3);
     }
 }
 

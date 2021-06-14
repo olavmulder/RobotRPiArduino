@@ -41,7 +41,6 @@ void Map::SetDistanceArray(){
         ds.at(i).ReadDistanceValue(i);
         arrayDistanceValues[i]  = ds.at(i).GetDistance();
     }
-    
 }
 
 void Map::SetMap(){

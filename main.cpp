@@ -21,6 +21,7 @@
 #include <thread>
 //#define MANUAL
 #define AUTOMATIC
+#define TURN
 
 #define AMOUNT_LOCATIONS 4
 
@@ -30,11 +31,6 @@ using namespace std;
 #define DEVICE_ID 0x08
 #define MAX_RES_WIDTH 640
 #define MAX_RES_HEIGHT 320
-
-
-
-#define TURN
-
 
 /*
  V  draaien om de 3 tegels
@@ -112,12 +108,13 @@ void pathfinding(){
   //calculate route
   route.SetRoute(&mapNew[0][0], 0,0, finishCoordinates[0][0], finishCoordinates[0][1]);
   route.PrintRoute();
+  #ifdef TURN
+    int turnCounter = 2;
+  #endif
 
-  int turnCounter = 2;
   for(unsigned char i=0;i<AMOUNT_LOCATIONS;i++){
     while(/*1*/route.GetstepInRouteCounter()/2 < route.GetSize()){
-      //update map
-
+     
       while(targetOffset != 0 /*&& !map.GetTargetHit(0route.GetRouteCounter()) && *map.GetTargetLocation(0/*route.GetRouteCounter()) == -1)*/){//if target is detected get cur location + front distanc sensor
         printf("in while loop targetoffset\n");
         map.SetTargetOffset(0,targetOffset);
@@ -126,7 +123,7 @@ void pathfinding(){
         //map.SetTargetHit(route.GetRouteCounter());
         //targetOffset = 0;
       }
-
+      //update map
       map.SetMap();
       ptrMap = map.GetMap();
       for(int i =0;i<HEIGHT;i++){
@@ -161,28 +158,28 @@ void pathfinding(){
         std::cin >> y;
         std::cout << "\nType direction: ";
         std::cin >> ownDir;
-        motor.SetCurrentLocation(x,y);
-        motor.SetCurrentDirection((DirNouse)ownDir);
+        map.motor->SetCurrentLocation(x,y);
+        map.motor->SetCurrentDirection((DirNouse)ownDir);
         sleep(2);
       #endif
-
+      #ifdef AUTOMATIC
       map.motor->CalculateCurrentLocationWithRoute(route.GetRoute(), route.GetSize(),route.GetstepInRouteCounter());
       //std::cout << "cur direction " << map.motor->GetCurrentDirection()<<std::endl;
       //std::cout << "cur location " << *map.motor->GetCurrentLocation() << "," << *(map.motor->GetCurrentLocation()+1) << std::endl;
       route.SetstepInRouteCounter(route.GetstepInRouteCounter()+2);
       route.PrintstepInRouteCounter();
-      
       //turn 360 after three tiles
-      #ifdef TURN
-        turnCounter --;
-        std::cout << "turnCounter = ";
-        std::cout << turnCounter << std::endl;
-        if(turnCounter==0){
-          motor.Drive(TURN360);
-          turnCounter = 2;
-        }
+        #ifdef TURN
+          turnCounter --;
+          std::cout << "turnCounter = ";
+          std::cout << turnCounter << std::endl;
+          if(turnCounter==0){
+            motor.Drive(TURN360);
+            turnCounter = 2;
+          }
+        #endif
+
       #endif
-      
       /*if(map.GetTargetHit(route.GetRouteCounter())){
         route.SetRouteCounter(route.GetRouteCounter()+1);//set route counter +1, new route
       }*/

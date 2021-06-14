@@ -36,10 +36,12 @@ void Target::CalculateTargetLocation(int curX, int curY, DirNouse dirNouse, int 
     while(offset != 0 && !GetHit()){
         printf("while loop calculateTargetlocation");
         if(offset < -10){   
-            motor.Drive(RIGHT);
+            //motor.Drive(RIGHT);
+            printf("beetje rechts\n");
         }
         if(offset > 10){
-            motor.Drive(LEFT);
+            //motor.Drive(LEFT);
+            printf("beetje links\n");
         }
         if(offset >= -10 && offset <= 10){
             //fire
