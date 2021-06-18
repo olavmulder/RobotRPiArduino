@@ -31,17 +31,18 @@ class Map{
         Map(Motor *motor,int amountTarget);
         //map
         int* GetMap();
-        void SetMap();
+        void SetMap( );
         void SetDistanceArray();
         void CheckDifference(int*oldMap , int*newMap);
         //target
-        int* GetTargetLocation(int id);
-        bool GetTargetHit(int id);
-        void SetTargetHit(int id);
-        void SetTargetOffset(int id, int offset);
-        void CalculateTargetLocation(int id, int x, int y, DirNouse dir);
+        int* GetTargetLocation(Color id);
+        bool GetTargetHit(Color id);
+        void SetTargetHit(Color id);
+        void SetTargetOffset(Color id, int offset);
+        void CalculateTargetLocation(Color id, int x, int y, DirNouse dir);
         void SetChanged(bool status);
         bool GetChanged();
+        void PrintMap();
 };
 
 #endif

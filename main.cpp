@@ -23,7 +23,7 @@
 #define AUTOMATIC
 #define TURN
 
-#define AMOUNT_LOCATIONS 4
+#define AMOUNT_LOCATIONS 3
 
 using namespace cv;
 using namespace std;
@@ -44,37 +44,40 @@ using namespace std;
 
 void pathfinding();
 void openCV();
-//global state:
-bool targetDetected =false;
-int targetOffset;
 
 int main() {
+  Color idTarget;
+  Color *id = &idTarget;
+  int offsetTarget;
+  int *offset = &offsetTarget;
 
-  std::thread path(pathfinding);
-  std::thread cv(openCV);
+  std::thread path(pathfinding, offset, id);
+  std::thread cv(openCV, offset, id);
   path.join();
   cv.join();
   return 0;
 }
-void openCV(){
+void openCV(int* offset, Color *id){
 
 	Mat img;
 	VideoCapture cap(0);
 	
 	while(true){
     
-		cap.read(img);
+		/*cap.read(img);
 		Image Image(img);
 		Contouren Contouren(Image.getImage());
 		Grouping Grouping(Contouren.getCenters(), Contouren.getContoursPoly(), Contouren.getContourSize(), Contouren.getProcessed());
 	  TargetCV TargetCV(Grouping.getTotalGroup(), Grouping.getGroupCounter(), Grouping.getArray(), Contouren.getContourSize(), Contouren.getContoursPoly());
-		Draw Draw(Contouren.getContoursPoly(), TargetCV.getTargetGroups(), Contouren.getProcessed());
+		Draw Draw(Contouren.getContoursPoly(), TargetCV.getTargetGroups(), Contouren.getProcessed());*/
 		
-		targetOffset = TargetCV.getOffset();
+		*offset = 345;//TargetCV.getOffset();
+    *id = (Color)1;//TargetCV.getColor();
 		waitKey(1);
   }
+
 }
-void pathfinding(){
+void pathfinding(int* offset, Color *id){
   Route route;
   Motor motor;
   Map map(&motor, AMOUNT_LOCATIONS);
@@ -89,15 +92,23 @@ void pathfinding(){
     {0,0}//top left corner
   };
   
-  DirNouse dirNouse;
-
   //init map variables
   int mapNew[HEIGHT][WIDTH];
   int mapOld[HEIGHT][WIDTH];
   int *ptrMap;
   //current location
+  
+  //test function 
+  // int *x= map.motor->GetCurrentLocation();
+  // int *y= x+1;
+  // map.SetDistanceArray();//calculate distance
+  // map.CalculateTargetLocation(0, *x,*y, map.motor->GetCurrentDirection(), offset);
+  // map.SetMap();
+  // map.PrintMap();
+  
 
   //set map
+  map.SetDistanceArray();//update distance values
   map.SetMap();
   ptrMap = map.GetMap();
   for(int i =0;i<HEIGHT;i++){
@@ -112,77 +123,78 @@ void pathfinding(){
     int turnCounter = 2;
   #endif
 
-  for(unsigned char i=0;i<AMOUNT_LOCATIONS;i++){
-    while(/*1*/route.GetstepInRouteCounter()/2 < route.GetSize()){
-     
-      while(targetOffset != 0 /*&& !map.GetTargetHit(0route.GetRouteCounter()) && *map.GetTargetLocation(0/*route.GetRouteCounter()) == -1)*/){//if target is detected get cur location + front distanc sensor
-        printf("in while loop targetoffset\n");
-        map.SetTargetOffset(0,targetOffset);
-        map.CalculateTargetLocation(0, *map.motor->GetCurrentLocation(),*(map.motor->GetCurrentLocation()+1),map.motor->GetCurrentDirection());//front camera = +1
-        route.SetstepInRouteCounter(0);//reset step in route counter because new route
-        //map.SetTargetHit(route.GetRouteCounter());
-        //targetOffset = 0;
-      }
-      //update map
-      map.SetMap();
-      ptrMap = map.GetMap();
-      for(int i =0;i<HEIGHT;i++){
-        for(int j=0;j<WIDTH;j++){
-          mapNew[i][j]= *(ptrMap+(WIDTH*i)+j);
-        }
-      }
-      map.CheckDifference(&mapNew[0][0], &mapOld[0][0]);
-      //check if map is changed
-      if(map.GetChanged()){
-        std::cout << "new route" << std::endl;
-        for(int i =0;i<HEIGHT;i++){
-          for(int j=0;j<WIDTH;j++){
-            mapOld[i][j]= mapNew[i][j];
-          }
-        }
+  //for(unsigned char i=0;i<AMOUNT_LOCATIONS;i++){
+    while(route.GetstepInRouteCounter()/2 < route.GetSize()){
 
-        if(route.SetRoute(&mapOld[0][0], *map.motor->GetCurrentLocation(), *(map.motor->GetCurrentLocation()+1), 
-          finishCoordinates[/*route.GetRouteCounter()*/0][0], finishCoordinates[route./*GetRouteCounter()*/0][1]) == 0){
-          //std::abort(); 
+      map.SetDistanceArray();//update distance values
+
+      if(*offset != 0){//if target is detected get cur location + front distanc sensor
+        //check color/id
+        printf("color: %d\n", *id);
+        if(!map.GetTargetHit(*id)){//if detected color is already hit, skip this
+          map.SetTargetOffset(*id,targetOffset);
+          map.CalculateTargetLocation(*id, *map.motor->GetCurrentLocation(),*(map.motor->GetCurrentLocation()+1),map.motor->GetCurrentDirection());//front camera = +1
+
+        }else{
+          printf("current id is already hit\n");
         }
       }else{
-        std::cout << "same route" << std::endl;
-      }
-      route.PrintRoute();
-      //set manual location:
-      #ifdef MANUAL
-        int x,y, ownDir;
-        std::cout << "\nType x:";
-        std::cin >> x;
-        std::cout << "\nType y: ";
-        std::cin >> y;
-        std::cout << "\nType direction: ";
-        std::cin >> ownDir;
-        map.motor->SetCurrentLocation(x,y);
-        map.motor->SetCurrentDirection((DirNouse)ownDir);
-        sleep(2);
-      #endif
-      #ifdef AUTOMATIC
-      map.motor->CalculateCurrentLocationWithRoute(route.GetRoute(), route.GetSize(),route.GetstepInRouteCounter());
-      //std::cout << "cur direction " << map.motor->GetCurrentDirection()<<std::endl;
-      //std::cout << "cur location " << *map.motor->GetCurrentLocation() << "," << *(map.motor->GetCurrentLocation()+1) << std::endl;
-      route.SetstepInRouteCounter(route.GetstepInRouteCounter()+2);
-      route.PrintstepInRouteCounter();
-      //turn 360 after three tiles
-        #ifdef TURN
-          turnCounter --;
-          std::cout << "turnCounter = ";
-          std::cout << turnCounter << std::endl;
-          if(turnCounter==0){
-            motor.Drive(TURN360);
-            turnCounter = 2;
+        //update map
+        map.SetMap();
+        ptrMap = map.GetMap();
+        for(int i =0;i<HEIGHT;i++){
+          for(int j=0;j<WIDTH;j++){
+            mapNew[i][j]= *(ptrMap+(WIDTH*i)+j);
           }
-        #endif
+        }
+        //check if map is changed
+        map.CheckDifference(&mapNew[0][0], &mapOld[0][0]);
+        if(map.GetChanged()){
+          std::cout << "new route" << std::endl;
+          for(int i =0;i<HEIGHT;i++){
+            for(int j=0;j<WIDTH;j++){
+              mapOld[i][j]= mapNew[i][j];
+            }
+          }
 
-      #endif
-      /*if(map.GetTargetHit(route.GetRouteCounter())){
-        route.SetRouteCounter(route.GetRouteCounter()+1);//set route counter +1, new route
-      }*/
+          if(route.SetRoute(&mapOld[0][0], *map.motor->GetCurrentLocation(), *(map.motor->GetCurrentLocation()+1), 
+            finishCoordinates[route.GetRouteCounter()][0], finishCoordinates[route.GetRouteCounter()][1]) == 0){
+          }
+        }else{
+          std::cout << "same route" << std::endl;
+        }
+        route.PrintRoute();
+        //set manual location:
+        #ifdef MANUAL
+          int x,y, ownDir;
+          std::cout << "\nType x:";
+          std::cin >> x;
+          std::cout << "\nType y: ";
+          std::cin >> y;
+          std::cout << "\nType direction: ";
+          std::cin >> ownDir;
+          map.motor->SetCurrentLocation(x,y);
+          map.motor->SetCurrentDirection((DirNouse)ownDir);
+          sleep(2);
+        #endif
+        #ifdef AUTOMATIC
+        
+        map.motor->CalculateCurrentLocationWithRoute(route.GetRoute(), route.GetSize(),route.GetstepInRouteCounter());
+
+        route.SetstepInRouteCounter(route.GetstepInRouteCounter()+2);
+        route.PrintstepInRouteCounter();
+        //turn 360 after three tiles
+          #ifdef TURN
+            turnCounter --;
+            std::cout << "turnCounter = ";
+            std::cout << turnCounter << std::endl;
+            if(turnCounter==0){
+              motor.Drive(TURN360);
+              turnCounter = 2;
+            }
+          #endif
+        #endif
+      }
     }
-  }
+  //}
 }

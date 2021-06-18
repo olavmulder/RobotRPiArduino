@@ -3,12 +3,6 @@
 Target::Target(){
     SetTargetLocation(-1,-1);
 }
-void SetOffset(int targetOffset){
-    offset = targetOffset;
-}
-int GetOffset(){
-    return offset;
-}
 void Target::SetHit(){
     targetHit = true;
 }
@@ -24,7 +18,7 @@ int* Target::GetTargetLocation(){
 void Target::SetTargetLocation(int x, int y){
     targetLocationArray.SetLocation(x,y);
 }
-void Target::CalculateTargetLocation(int curX, int curY, DirNouse dirNouse, int distance, int tileSize){
+void Target::CalculateTargetLocation(int curX, int curY, DirNouse dirNouse, int distance, int tileSize, int *offset){
     I2C i2c;
     i2c.OpenBus();
     i2c.WriteBytes(11);//ask angle ;
@@ -33,6 +27,8 @@ void Target::CalculateTargetLocation(int curX, int curY, DirNouse dirNouse, int 
     int angle;
     i2c.CloseBus();
     printf("targetOffset in Calculate: %d\n",offset);
+    printf("angle in Calculate: %d\n",startAngle);
+/*
     while(offset != 0 && !GetHit()){
         printf("while loop calculateTargetlocation");
         if(offset < -10){   
@@ -115,5 +111,5 @@ void Target::CalculateTargetLocation(int curX, int curY, DirNouse dirNouse, int 
 
             } 
         }  
-    }    
+    }    */
 }
