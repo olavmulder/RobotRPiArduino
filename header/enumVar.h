@@ -9,9 +9,6 @@
         NORTH, EAST, SOUTH, WEST
     }DirNouse;
     
-    typedef enum{
-        RED, BLUE, GREEN
-    }Color;
     #define WIDTH 5
     #define HEIGHT 5
 #endif

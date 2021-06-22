@@ -19,12 +19,13 @@
 #include <iostream>
 #include <fstream>
 #include <thread>
-//#define MANUAL
-#define AUTOMATIC
-#define TURN
 
-#define AMOUNT_LOCATIONS 3
+//#define TURN
+#define BLUE 0
+#define RED 1
 
+#define AMOUNT_TARGETS 2
+#define FINISH_LOCATIONS 4
 using namespace cv;
 using namespace std;
 
@@ -32,59 +33,122 @@ using namespace std;
 #define MAX_RES_WIDTH 640
 #define MAX_RES_HEIGHT 320
 
-/*
- V  draaien om de 3 tegels
- V   if destenation cell is block pak een cell eerder als destanation 
-    - cell onderscheiden van onbekent, vrij, blocked en target
-    - iets met states-> als target wordt herkend dan stop met rijden.
-    - 2 threads -> global var voor state, dan state checken
-    - angel vragen ?? -180/180 kan niet, toch??. 
-        twee waardes sturen? 0 & 1 daarna waarde, 1 positief, 0 negatief
-*/
-
-void pathfinding(int*, Color*);
-void openCV(int*, Color*);
-
+void pathfinding(int*, int*);
+void openCV(int*, int*);
+const int max_value_H = 360/2;
+const int max_value = 255;
+const String window_capture_name = "Video Capture";
+const String window_detection_name = "Object Detection";
+int low_H = 0, low_S = 0, low_V = 0;
+int high_H = max_value_H, high_S = max_value, high_V = max_value;
+static void on_low_H_thresh_trackbar(int, void *){
+    low_H = min(high_H-1, low_H);
+    setTrackbarPos("Low H", window_detection_name, low_H);
+}
+static void on_high_H_thresh_trackbar(int, void *){
+    high_H = max(high_H, low_H+1);
+    setTrackbarPos("High H", window_detection_name, high_H);
+}
+static void on_low_S_thresh_trackbar(int, void *){
+    low_S = min(high_S-1, low_S);
+    setTrackbarPos("Low S", window_detection_name, low_S);
+}
+static void on_high_S_thresh_trackbar(int, void *){
+    high_S = max(high_S, low_S+1);
+    setTrackbarPos("High S", window_detection_name, high_S);
+}
+static void on_low_V_thresh_trackbar(int, void *){
+    low_V = min(high_V-1, low_V);
+    setTrackbarPos("Low V", window_detection_name, low_V);
+}
+static void on_high_V_thresh_trackbar(int, void *){
+    high_V = max(high_V, low_V+1);
+    setTrackbarPos("High V", window_detection_name, high_V);
+}
 int main() {
   
-  Color id;
-  int offset = 1;
+  int id;
+  int offset = 0;
   std::thread path(pathfinding, &offset, &id);
   std::thread cv(openCV, &offset, &id);
   path.join();
   cv.join();
   return 0;
 }
-void openCV(int* offset, Color *id){
+void openCV(int* offset, int *id){
 
-	Mat img;
+	Mat img, myHSV, frame_threshold;
 	VideoCapture cap(0);
-	
+  cap.set(CV_CAP_PROP_AUTO_EXPOSURE, 0.25);
+	cap.set(CV_CAP_PROP_BRIGHTNESS,0.5);
+  cap.set(CV_CAP_PROP_CONTRAST, 0.5);
+  cap.set(CV_CAP_PROP_SATURATION, 0.5);
+
+  namedWindow(window_detection_name);
+    // Trackbars to set thresholds for HSV values
+    createTrackbar("Low H", window_detection_name, &low_H, max_value_H, on_low_H_thresh_trackbar);
+    createTrackbar("High H", window_detection_name, &high_H, max_value_H, on_high_H_thresh_trackbar);
+    createTrackbar("Low S", window_detection_name, &low_S, max_value, on_low_S_thresh_trackbar);
+    createTrackbar("High S", window_detection_name, &high_S, max_value, on_high_S_thresh_trackbar);
+    createTrackbar("Low V", window_detection_name, &low_V, max_value, on_low_V_thresh_trackbar);
+    createTrackbar("High V", window_detection_name, &high_V, max_value, on_high_V_thresh_trackbar);
+    
 	while(true){
     
-		/*cap.read(img);
+		cap.read(img);
 		Image Image(img);
-		Contouren Contouren(Image.getImage());
-		Grouping Grouping(Contouren.getCenters(), Contouren.getContoursPoly(), Contouren.getContourSize(), Contouren.getProcessed());
-	  TargetCV TargetCV(Grouping.getTotalGroup(), Grouping.getGroupCounter(), Grouping.getArray(), Contouren.getContourSize(), Contouren.getContoursPoly());
-		Draw Draw(Contouren.getContoursPoly(), TargetCV.getTargetGroups(), Contouren.getProcessed());*/
-		
-		*offset= *offset+1;//TargetCV.getOffset();
-    *id = (Color)1;//TargetCV.getColor();
-    sleep(5);
+		Contouren Contouren(Image.getImage())/*, ContourenBlue(Image.getBlueImage()), ContourenRed(Image.getRedImage())*/;
+		Grouping Grouping(Contouren.getCenters(), Contouren.getContoursPoly(), Contouren.getContourSize(), Contouren.getProcessed()) /*, GroupingBlue(ContourenBlue.getCenters(), ContourenBlue.getContoursPoly(), ContourenBlue.getContourSize(), ContourenBlue.getProcessed()), GroupingRed(ContourenRed.getCenters(), ContourenRed.getContoursPoly(), ContourenRed.getContourSize(), ContourenRed.getProcessed())*/;
+	  TargetCV TargetCV(Grouping.getTotalGroup(), Grouping.getGroupCounter(), Grouping.getArray(), Contouren.getContourSize(), Contouren.getContoursPoly())/*, TargetCVBlue(GroupingBlue.getTotalGroup(), GroupingBlue.getGroupCounter(), GroupingBlue.getArray(), ContourenBlue.getContourSize(), ContourenBlue.getContoursPoly()), TargetCVRed(GroupingRed.getTotalGroup(), GroupingRed.getGroupCounter(), GroupingRed.getArray(), ContourenRed.getContourSize(), ContourenRed.getContoursPoly())*/;
+		Draw Draw(Contouren.getContoursPoly(), TargetCV.getTargetGroups(), Contouren.getProcessed())/*, DrawBlue(ContourenBlue.getContoursPoly(), TargetCVBlue.getTargetGroups(), ContourenBlue.getProcessed()), DrawRed(ContourenRed.getContoursPoly(), TargetCVRed.getTargetGroups(), ContourenRed.getProcessed())*/;
+     
+    vector<Point2f> undefinedTarget;
+    float amountWhiteBlue = 0;
+    float amountWhiteRed = 0;
+    
+    undefinedTarget = TargetCV.getTargetGroups();
+    if(undefinedTarget[0].x > 60 && undefinedTarget[0].y > 60){
+      int xPos = undefinedTarget[0].x;
+      int yPos = undefinedTarget[0].y;
+
+      Image.setRoi(xPos, yPos);
+      Image.setPercentageFound();
+      amountWhiteBlue = Image.getBluePercentage();
+      amountWhiteRed = Image.getRedPercentage();
+      Image.showBlueTarget();
+      Image.showRedTarget();
+    }
+    
+          
+      if(amountWhiteBlue > 10 && amountWhiteBlue != 0){
+        cout << "target is blue" << endl;
+        *id = BLUE;
+        *offset = TargetCV.getOffset();
+      }else if(amountWhiteRed > 10 && amountWhiteRed != 0){
+        cout << "target is Red" << endl;
+        *id = RED;
+        *offset = TargetCV.getOffset();
+      }else if(amountWhiteRed < 10 && amountWhiteRed < 10 && amountWhiteRed != 0){
+        cout << "target is undefined! " << endl;
+      }
+    
+    myHSV = Image.getHSVImage();
+    inRange(myHSV, Scalar(low_H, low_S, low_V), Scalar(high_H, high_S, high_V), frame_threshold);
+    imshow(window_detection_name, frame_threshold);
+    
 		waitKey(1);
   }
 
 }
-void pathfinding(int* offset, Color *id){
+void pathfinding(int* offset, int *id){
   Route route;
   Motor motor;
-  Map map(&motor, AMOUNT_LOCATIONS);
+  Map map(&motor, AMOUNT_TARGETS);
   
   //variable to count down for a 360 turn
   //start x, start y, dest x, dest y; 
   //x,y
-  int finishCoordinates[][2] = {
+  int finishCoordinates[FINISH_LOCATIONS][2] = {
     {WIDTH-1, 0},//right top corner
     {WIDTH-1,HEIGHT-1},//right under corner
     {0, HEIGHT-1},//left under corner
@@ -95,16 +159,18 @@ void pathfinding(int* offset, Color *id){
   int mapNew[HEIGHT][WIDTH];
   int mapOld[HEIGHT][WIDTH];
   int *ptrMap;
-  //current location
+  
   
   //test function 
-  // int *x= map.motor->GetCurrentLocation();
-  // int *y= x+1;
-  // map.SetDistanceArray();//calculate distance
-  // map.CalculateTargetLocation(0, *x,*y, map.motor->GetCurrentDirection(), offset);
-  // map.SetMap();
-  // map.PrintMap();
-  
+  /*int *x= map.motor->GetCurrentLocation();
+  int *y= x+1;
+  map.SetDistanceArray();//calculate distance
+  map.motor->SetCurrentDirection(NORTH);
+  map.CalculateTargetLocation(id, *x,*y, map.motor->GetCurrentDirection(), offset);
+  std::cout << *map.GetTargetLocation(*id) << "," << *(map.GetTargetLocation(*id)+1)<<std::endl;
+  map.SetMap();
+  map.PrintMap();
+  */
 
   //set map
   map.SetDistanceArray();//update distance values
@@ -122,19 +188,18 @@ void pathfinding(int* offset, Color *id){
     int turnCounter = 2;
   #endif
 
-  //for(unsigned char i=0;i<AMOUNT_LOCATIONS;i++){
-    while(route.GetstepInRouteCounter()/2 < route.GetSize()){
+  for(unsigned char i=0;i<FINISH_LOCATIONS;i++){
+    while(route.GetstepInRouteCounter()/2 <= route.GetSize()){
 
       map.SetDistanceArray();//update distance values
-
       if(*offset != 0){//if target is detected
         //check color/id
-        printf("color: %d\n", *id);
+        
         if(!map.GetTargetHit(id)){//if detected color is already hit, skip this
+          printf("color: %d\n", *id);
           map.CalculateTargetLocation(id, *map.motor->GetCurrentLocation(),*(map.motor->GetCurrentLocation()+1),map.motor->GetCurrentDirection(), offset);//front camera = +1
-
         }else{
-          printf("current id is already hit\n");
+          printf("%d is already hit\n", *id);
         }
       }else{
         //update map
@@ -158,29 +223,18 @@ void pathfinding(int* offset, Color *id){
           if(route.SetRoute(&mapOld[0][0], *map.motor->GetCurrentLocation(), *(map.motor->GetCurrentLocation()+1), 
             finishCoordinates[route.GetRouteCounter()][0], finishCoordinates[route.GetRouteCounter()][1]) == 0){
           }
-        }else{
+        }/*else{
           std::cout << "same route" << std::endl;
-        }
+        }*/
+        //print route & map
         route.PrintRoute();
-        //set manual location:
-        #ifdef MANUAL
-          int x,y, ownDir;
-          std::cout << "\nType x:";
-          std::cin >> x;
-          std::cout << "\nType y: ";
-          std::cin >> y;
-          std::cout << "\nType direction: ";
-          std::cin >> ownDir;
-          map.motor->SetCurrentLocation(x,y);
-          map.motor->SetCurrentDirection((DirNouse)ownDir);
-          sleep(2);
-        #endif
-        #ifdef AUTOMATIC
-        
+        map.PrintMap();
+        //drive to next position in route array and set new location
         map.motor->CalculateCurrentLocationWithRoute(route.GetRoute(), route.GetSize(),route.GetstepInRouteCounter());
 
+        //add two(x and y pos) to current stepinRouteCounter  
         route.SetstepInRouteCounter(route.GetstepInRouteCounter()+2);
-        route.PrintstepInRouteCounter();
+        
         //turn 360 after three tiles
           #ifdef TURN
             turnCounter --;
@@ -191,8 +245,15 @@ void pathfinding(int* offset, Color *id){
               turnCounter = 2;
             }
           #endif
-        #endif
       }
     }
-  //}
+    //at the end of route
+    printf("------------end of route---------\n");
+    route.SetstepInRouteCounter(0); //reset step in route counter
+    route.SetRouteCounter(route.GetRouteCounter()+1);//increase route counter
+    //set new route to new destination
+    printf("make new route\n");
+    route.SetRoute(&mapNew[0][0], *map.motor->GetCurrentLocation(), *(map.motor->GetCurrentLocation()+1), finishCoordinates[route.GetRouteCounter()][0], finishCoordinates[route.GetRouteCounter()][1]);
+    route.PrintRoute();
+  }
 }

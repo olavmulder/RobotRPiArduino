@@ -38,13 +38,13 @@ void TargetCV::selectTarget(){
     }
     if(targetCounter != 0){
         if(target2 == 0){
-            cout << "target confirmed! Center position = " << targetGroup[0] << endl;
+            //cout << "target confirmed! Center position = " << targetGroup[0] << endl;
             offset = targetGroup[0].x;
-        }else if(target2 < target1){
-            cout << "Closest target = target 2! Center position =" << targetGroup[1] << endl;
-            offset = targetGroup[0].x;
+        }else if(target2 < target1 && target2 != 0){
+            //cout << "Closest target = target 2! Center position =" << targetGroup[1] << endl;
+            offset = targetGroup[1].x;
         }else if(target2 > target1){
-            cout << "Closest target = target 1! Center position =" << targetGroup[0] << endl;
+            //cout << "Closest target = target 1! Center position =" << targetGroup[0] << endl;
             offset = targetGroup[0].x;
         }
     }

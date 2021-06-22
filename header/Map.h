@@ -39,10 +39,10 @@ class Map{
         void PrintMap();
         //target
         int* GetTargetLocation(int id);
-        bool GetTargetHit(Color *id);
-        void SetTargetHit(Color *id);
+        bool GetTargetHit(int *id);
+        void SetTargetHit(int *id);
 
-        void CalculateTargetLocation(Color *id, int x, int y, DirNouse dir, int* offset);
+        void CalculateTargetLocation(int *id, int x, int y, DirNouse dir, int* offset);
        
 };
 

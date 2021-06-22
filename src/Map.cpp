@@ -32,13 +32,13 @@ bool Map::GetChanged(){
 int* Map::GetTargetLocation(int id){
   return target.at(id).GetTargetLocation();
 }
-bool Map::GetTargetHit(Color *id){
+bool Map::GetTargetHit(int *id){
     return target.at(*id).GetHit();
 }
-void Map::SetTargetHit(Color *id){
+void Map::SetTargetHit(int *id){
     target.at(*id).SetHit();
 }
-void Map::CalculateTargetLocation(Color *id, int x, int y, DirNouse dir, int* offset){
+void Map::CalculateTargetLocation(int *id, int x, int y, DirNouse dir, int* offset){
     
     target.at(*id).CalculateTargetLocation(x,y,dir,arrayDistanceValues[1],TILE_SIZE, offset);
 }
@@ -50,15 +50,7 @@ void Map::SetDistanceArray(){
 }
 
 void Map::SetMap(){
-    //set targets in map
-    for(int i=0;i<amountTargets;i++){
-        if(*GetTargetLocation(i) != -1){
-            int *x = GetTargetLocation(i);
-            int *y = x+1;
-            *(map+(*y*WIDTH)+*x) = TARGET;
-        }
-    }
-    
+ 
     //get current x & y 
     int *x = motor->GetCurrentLocation();
     int *y = x+1;
@@ -212,13 +204,21 @@ void Map::SetMap(){
             i++;
         }
     }
+        //set targets in map
+    for(int i=0;i<amountTargets;i++){
+        if(*GetTargetLocation(i) != -1){
+            int *x = GetTargetLocation(i);
+            int *y = x+1;
+            *(map+(*y*WIDTH)+*x) = TARGET;
+        }
+    }
     *map = OPEN;//begin in open
-    for(uint8_t i=0;i< HEIGHT;i++){
+    /*for(uint8_t i=0;i< HEIGHT;i++){
         for(uint8_t j=0;j< WIDTH;j++){
             std::cout << *(map+(i*WIDTH)+j);
         }
         std::cout << "\n";
-    }        
+    }        */
 } 
 int* Map::GetMap(){
     return &map[0];

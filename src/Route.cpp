@@ -30,10 +30,8 @@ void Route::PrintRoute(){
         std::cout << "("<< routeArray[i][0]<<","<< routeArray[i][1] << "), ";
     }
     std::cout << std::endl;
-    
 }
 int* Route::GetRoute(){
-
     return &routeArray[0][0];
 }
 char Route::SetRoute(int* map, int sX, int sY,int dX, int dY ){
@@ -128,13 +126,7 @@ void Route::tracePath(cell cellDetails[][WIDTH], Pair dest)
         routeArray[sizeOfPath][1] = p.first;
         sizeOfPath++;
         Path.pop();
-		/**(routeArray+sizeOfPath) = p.first;
-		sizeOfPath++;
-        *(routeArray+sizeOfPath) = p.second;
-        sizeOfPath++;
-        //printf("%d, %d\n", p.first, p.second);
-        Path.pop();
-        i++;*/
+		
     }
     return;
 }
