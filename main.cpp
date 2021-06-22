@@ -25,7 +25,7 @@
 #define RED 1
 
 #define AMOUNT_TARGETS 2
-#define FINISH_LOCATIONS 4
+#define FINISH_LOCATIONS 5
 using namespace cv;
 using namespace std;
 
@@ -145,16 +145,16 @@ void pathfinding(int* offset, int *id){
   Motor motor;
   Map map(&motor, AMOUNT_TARGETS);
   
-  //variable to count down for a 360 turn
-  //start x, start y, dest x, dest y; 
-  //x,y
+
+  //location to visit, first three fixed, last 2 = the found targetLocations.
   int finishCoordinates[FINISH_LOCATIONS][2] = {
     {WIDTH-1, 0},//right top corner
     {WIDTH-1,HEIGHT-1},//right under corner
-    {0, HEIGHT-1},//left under corner
-    {0,0}//top left corner
+    {0,0},//top left corner
+    {*map.GetTargetLocation(0),*(map.GetTargetLocation(0)+1)},//first target x,y
+    {*map.GetTargetLocation(1),*(map.GetTargetLocation(1)+1)}
   };
-  
+
   //init map variables
   int mapNew[HEIGHT][WIDTH];
   int mapOld[HEIGHT][WIDTH];
@@ -223,9 +223,7 @@ void pathfinding(int* offset, int *id){
           if(route.SetRoute(&mapOld[0][0], *map.motor->GetCurrentLocation(), *(map.motor->GetCurrentLocation()+1), 
             finishCoordinates[route.GetRouteCounter()][0], finishCoordinates[route.GetRouteCounter()][1]) == 0){
           }
-        }/*else{
-          std::cout << "same route" << std::endl;
-        }*/
+        }
         //print route & map
         route.PrintRoute();
         map.PrintMap();
