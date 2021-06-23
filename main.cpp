@@ -120,16 +120,16 @@ void openCV(int* offset, int *id){
     }
     
           
-      if(amountWhiteBlue > 10 && amountWhiteBlue != 0){
-        cout << "target is blue" << endl;
+      if(amountWhiteBlue > 15 && amountWhiteBlue != 0){
+        //cout << "target is blue" << endl;
         *id = BLUE;
         *offset = TargetCV.getOffset();
-      }else if(amountWhiteRed > 10 && amountWhiteRed != 0){
-        cout << "target is Red" << endl;
+      }else if(amountWhiteRed > 5 && amountWhiteRed != 0){
+        //cout << "target is Red" << endl;
         *id = RED;
         *offset = TargetCV.getOffset();
-      }else if(amountWhiteRed < 10 && amountWhiteRed < 10 && amountWhiteRed != 0){
-        cout << "target is undefined! " << endl;
+      }else if(amountWhiteRed < 5 && amountWhiteBlue < 15 && amountWhiteRed != 0){
+        //cout << "target is undefined! " << endl;
       }
     
     myHSV = Image.getHSVImage();
@@ -192,9 +192,7 @@ void pathfinding(int* offset, int *id){
     while(route.GetstepInRouteCounter()/2 <= route.GetSize()){
 
       map.SetDistanceArray();//update distance values
-      if(*offset != 0){//if target is detected
-        //check color/id
-        
+      if(*offset != 0 && !map.GetTargetHit(id)){//if target is detected
         if(!map.GetTargetHit(id)){//if detected color is already hit, skip this
           printf("color: %d\n", *id);
           turnAngleBack = map.CalculateTargetLocation(id, *map.motor->GetCurrentLocation(),*(map.motor->GetCurrentLocation()+1),map.motor->GetCurrentDirection(), offset);//front camera = +1
@@ -202,10 +200,12 @@ void pathfinding(int* offset, int *id){
           printf("turn back\n");
           while(turnAngleBack != 0){
             if(turnAngleBack < 0){
-              map.motor->Drive(RIGHT)
+              printf("beetje rechts");
+              map.motor->Drive(RIGHT);
               turnAngleBack+=5;
             }
             else if(turnAngleBack > 0){
+              printf("beetje rechts");
               map.motor->Drive(LEFT);
               turnAngleBack-=5;
             }
@@ -232,9 +232,10 @@ void pathfinding(int* offset, int *id){
               mapOld[i][j]= mapNew[i][j];
             }
           }
-
+          route.SetstepInRouteCounter(0);
           if(route.SetRoute(&mapOld[0][0], *map.motor->GetCurrentLocation(), *(map.motor->GetCurrentLocation()+1), 
             finishCoordinates[route.GetRouteCounter()][0], finishCoordinates[route.GetRouteCounter()][1]) == 0){
+              
           }
         }
         //print route & map
@@ -243,7 +244,7 @@ void pathfinding(int* offset, int *id){
         //drive to next position in route array and set new location
         map.motor->CalculateCurrentLocationWithRoute(route.GetRoute(), route.GetSize(),route.GetstepInRouteCounter());
 
-        //add two(x and y pos) to current stepinRouteCounter  
+        //add two(x and y) pos to current stepinRouteCounter  
         route.SetstepInRouteCounter(route.GetstepInRouteCounter()+2);
         
         //turn 360 after three tiles
@@ -261,7 +262,9 @@ void pathfinding(int* offset, int *id){
     //at the end of route
     printf("------------end of route---------\n");
     route.SetstepInRouteCounter(0); //reset step in route counter
+    printf("get route counter %d", route.GetRouteCounter());
     route.SetRouteCounter(route.GetRouteCounter()+1);//increase route counter
+    printf("get route counter after %d", route.GetRouteCounter());
     //set new route to new destination
     printf("make new route\n");
     route.SetRoute(&mapNew[0][0], *map.motor->GetCurrentLocation(), *(map.motor->GetCurrentLocation()+1), finishCoordinates[route.GetRouteCounter()][0], finishCoordinates[route.GetRouteCounter()][1]);

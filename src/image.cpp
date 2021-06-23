@@ -73,13 +73,13 @@ void Image::setColorProcess(){
     dilate( frame_HSV, frame_HSV, getStructuringElement(MORPH_ELLIPSE, Size(5, 5)) );
 }
 void Image::redFilter(){
-    inRange(frame_HSV, Scalar(0, 79, 85), Scalar(11, 255, 255), redOnly);
+    inRange(frame_HSV, Scalar(103, 60, 85), Scalar(180, 255, 255), redOnly);
     //inRange(frame_HSV, Scalar(160, 0, 0), Scalar(180, 255, 255), mask2);
     //redOnly = mask1 | mask2;
     //Canny( redOnly, redOnly, thresh, thresh*2 );
 }
 void Image::blueFilter(){
-    inRange(frame_HSV, Scalar(69, 74, 96), Scalar(102, 255, 255), blueOnly);
+    inRange(frame_HSV, Scalar(78, 120, 83), Scalar(119, 255, 255), blueOnly);
     //Canny( blueOnly, blueOnly, thresh, thresh*2 );
 }
 Image::Image(Mat img){

@@ -44,10 +44,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pi/RobotRPiArduino
+CMAKE_SOURCE_DIR = /home/pi/Documents/project_compleet/RobotRPiArduino
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pi/RobotRPiArduino
+CMAKE_BINARY_DIR = /home/pi/Documents/project_compleet/RobotRPiArduino
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -74,14 +74,14 @@ clean: CMakeFiles/DisplayImage.dir/clean
 CMakeFiles/DisplayImage.dir/all:
 	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/depend
 	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pi/RobotRPiArduino/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14 "Built target DisplayImage"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pi/Documents/project_compleet/RobotRPiArduino/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14 "Built target DisplayImage"
 .PHONY : CMakeFiles/DisplayImage.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/DisplayImage.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/RobotRPiArduino/CMakeFiles 14
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/Documents/project_compleet/RobotRPiArduino/CMakeFiles 14
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/DisplayImage.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/RobotRPiArduino/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/Documents/project_compleet/RobotRPiArduino/CMakeFiles 0
 .PHONY : CMakeFiles/DisplayImage.dir/rule
 
 # Convenience name for target.

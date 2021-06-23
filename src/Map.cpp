@@ -40,7 +40,7 @@ void Map::SetTargetHit(int *id){
 }
 int Map::CalculateTargetLocation(int *id, int x, int y, DirNouse dir, int* offset){
     
-    return target.at(*id).CalculateTargetLocation(x,y,dir,arrayDistanceValues[1],TILE_SIZE, offset);
+    return target.at(*id).CalculateTargetLocation(x,y,dir,arrayDistanceValues[1],TILE_SIZE-3, offset);
 }
 void Map::SetDistanceArray(){
     for(uint8_t i=0;i<3;i++){
@@ -61,18 +61,18 @@ void Map::SetMap(){
     int tileDistanceA=1, tileDistanceB=1, tileDistanceC=1;//three var to store amount tiles to block 
     bool state= true;
     while(state){
-        if(arrayDistanceValues[0] > TILE_SIZE){tileDistanceA ++;arrayDistanceValues[0]-=TILE_SIZE;}
+        if(arrayDistanceValues[0] > TILE_SIZE-3){tileDistanceA ++;arrayDistanceValues[0]-=TILE_SIZE-3;}
         else state = false;
     }
 
     state = true;
     while(state){
-        if(arrayDistanceValues[1] > TILE_SIZE){tileDistanceB ++;arrayDistanceValues[1]-=TILE_SIZE;}
+        if(arrayDistanceValues[1] > TILE_SIZE-3){tileDistanceB ++;arrayDistanceValues[1]-=TILE_SIZE-3;}
         else state = false;
     }
     state = true;
     while(state){
-        if(arrayDistanceValues[2] > TILE_SIZE){tileDistanceC ++;arrayDistanceValues[2]-=TILE_SIZE;}
+        if(arrayDistanceValues[2] > TILE_SIZE-3){tileDistanceC ++;arrayDistanceValues[2]-=TILE_SIZE-3;}
         else state = false;
     }
    
@@ -225,9 +225,13 @@ int* Map::GetMap(){
 }
 
 void Map::CheckDifference(int* oldMap, int *newMap){
-    for(int i=0;i<WIDTH*HEIGHT;i++){
-        if(*(oldMap+i) != *(newMap+i))SetChanged(true);
-    }
     SetChanged(false);
+    for(int i=0;i<WIDTH*HEIGHT;i++){
+        if(*(oldMap+i) != *(newMap+i)){
+            SetChanged(true);
+        }
+        
+    }
+    
     
 }

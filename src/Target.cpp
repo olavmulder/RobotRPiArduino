@@ -26,22 +26,20 @@ int Target::CalculateTargetLocation(int curX, int curY, DirNouse dirNouse, int d
 
     while(*offset != 0 && GetHit() == false){
         //printf("while loop calculateTargetlocation\n");
-        if(*offset < -10){   
-            motor.Drive(RIGHT);
-            printf("beetje rechts\n");
-            angle+=5;
-            *offset = *offset +1;
-            printf("offset = %d\n", *offset);
-        }
-        if(*offset > 10){
-            
+        if(*offset < 300){   
+            printf("draai 5 graden left\n");
             motor.Drive(LEFT);
             angle-=5;
-            *offset = *offset -1;
-            printf("beetje links\n");
             printf("offset = %d\n", *offset);
         }
-        if(*offset >= -10 && *offset <= 10 ){
+        if(*offset > 340){
+            printf("draai 5 graden right\n");
+            motor.Drive(RIGHT);
+            angle+=5;
+            
+            printf("offset = %d\n", *offset);
+        }
+        if(*offset >= 300 && *offset <= 340 ){
             //fire
             
             printf("angle at fire = %d degree\n", angle);
@@ -52,9 +50,9 @@ int Target::CalculateTargetLocation(int curX, int curY, DirNouse dirNouse, int d
             distance = i2c.ReadBytes();
             i2c.CloseBus();
             
-            
+            distance += tileSize;
             printf("distance %d\n", distance);
-         
+            
             if(dirNouse == NORTH){
                 tilesXas =  sin(angle*3.14159/180)*distance/tileSize;//amount tile x as away from cur x 
                 tilesYas =  cos(angle*3.14159/180)*distance/tileSize;
@@ -161,7 +159,7 @@ int Target::CalculateTargetLocation(int curX, int curY, DirNouse dirNouse, int d
             printf("tilesY as: %d, tilesX as: %d\n", tilesYas, tilesXas);
             printf("dir is %d\n", dirNouse);
             printf("cur x %d, cur y %d\n", curX, curY);
-            printf("X = %d, Y = %d\n", targetLocationArray.GetLocationX(),targetLocationArray.GetLocationY());
+            printf("target: X = %d, Y = %d\n", targetLocationArray.GetLocationX(),targetLocationArray.GetLocationY());
             SetHit();//target is found
         }  
     }    
