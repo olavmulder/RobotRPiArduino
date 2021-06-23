@@ -20,7 +20,7 @@ void Target::SetTargetLocation(int x, int y){
     targetLocationArray.SetLocation(x,y);
 }
 
-void Target::CalculateTargetLocation(int curX, int curY, DirNouse dirNouse, int distance, int tileSize, int *offset){
+int Target::CalculateTargetLocation(int curX, int curY, DirNouse dirNouse, int distance, int tileSize, int *offset){
     int angle=0, tilesXas, tilesYas;
     printf("offset before while = %d\n", *offset);
 
@@ -165,4 +165,5 @@ void Target::CalculateTargetLocation(int curX, int curY, DirNouse dirNouse, int 
             SetHit();//target is found
         }  
     }    
+    return angle;
 }

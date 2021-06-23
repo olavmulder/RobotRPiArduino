@@ -187,7 +187,7 @@ void pathfinding(int* offset, int *id){
   #ifdef TURN
     int turnCounter = 2;
   #endif
-
+  int turnAngleBack=0;
   for(unsigned char i=0;i<FINISH_LOCATIONS;i++){
     while(route.GetstepInRouteCounter()/2 <= route.GetSize()){
 
@@ -197,7 +197,20 @@ void pathfinding(int* offset, int *id){
         
         if(!map.GetTargetHit(id)){//if detected color is already hit, skip this
           printf("color: %d\n", *id);
-          map.CalculateTargetLocation(id, *map.motor->GetCurrentLocation(),*(map.motor->GetCurrentLocation()+1),map.motor->GetCurrentDirection(), offset);//front camera = +1
+          turnAngleBack = map.CalculateTargetLocation(id, *map.motor->GetCurrentLocation(),*(map.motor->GetCurrentLocation()+1),map.motor->GetCurrentDirection(), offset);//front camera = +1
+          //turn back
+          printf("turn back\n");
+          while(turnAngleBack != 0){
+            if(turnAngleBack < 0){
+              map.motor->Drive(RIGHT)
+              turnAngleBack+=5;
+            }
+            else if(turnAngleBack > 0){
+              map.motor->Drive(LEFT);
+              turnAngleBack-=5;
+            }
+          }
+          printf("turn back is done!\n");
         }else{
           printf("%d is already hit\n", *id);
         }

@@ -42,7 +42,7 @@ class Map{
         bool GetTargetHit(int *id);
         void SetTargetHit(int *id);
 
-        void CalculateTargetLocation(int *id, int x, int y, DirNouse dir, int* offset);
+        int CalculateTargetLocation(int *id, int x, int y, DirNouse dir, int* offset);
        
 };
 

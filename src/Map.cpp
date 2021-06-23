@@ -38,9 +38,9 @@ bool Map::GetTargetHit(int *id){
 void Map::SetTargetHit(int *id){
     target.at(*id).SetHit();
 }
-void Map::CalculateTargetLocation(int *id, int x, int y, DirNouse dir, int* offset){
+int Map::CalculateTargetLocation(int *id, int x, int y, DirNouse dir, int* offset){
     
-    target.at(*id).CalculateTargetLocation(x,y,dir,arrayDistanceValues[1],TILE_SIZE, offset);
+    return target.at(*id).CalculateTargetLocation(x,y,dir,arrayDistanceValues[1],TILE_SIZE, offset);
 }
 void Map::SetDistanceArray(){
     for(uint8_t i=0;i<3;i++){

@@ -19,7 +19,7 @@ class Target{
         bool GetHit();
         int* GetTargetLocation();
         void SetTargetLocation(int x, int y);
-        void CalculateTargetLocation(int curX, int curY, DirNouse, int distance, int tileSize, int *offset);
+        int CalculateTargetLocation(int curX, int curY, DirNouse, int distance, int tileSize, int *offset);
 };
 
 #endif
