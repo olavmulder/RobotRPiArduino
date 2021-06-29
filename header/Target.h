@@ -11,6 +11,7 @@ class Target{
         Location targetLocationArray;
         bool targetHit;
         int locArr[2];
+        int previousOffset;
         
         Motor motor;
     public:

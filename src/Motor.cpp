@@ -1,5 +1,5 @@
 #include "../header/Motor.h"
-volatile bool interrupt = false;
+    volatile bool interrupt = false;
 void  setup();
 void Interrupt();
 bool GetInterrupt();
@@ -158,7 +158,7 @@ void Motor::CalculateCurrentLocationWithRoute(int *array, int size, int counter)
             //printf("direction = north\n");
         }
         currentLocation.SetLocation(newX, newY);
-        sleep(3);
+        //sleep(3);
     }
 }
 

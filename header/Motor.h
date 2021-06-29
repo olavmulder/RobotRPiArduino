@@ -6,6 +6,8 @@
 #include <iostream>
 #include <wiringPi.h>
 #define TILE_SIZE 30 //tile size in cm
+
+
 class Motor{
     private:
         Location currentLocation;

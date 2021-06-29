@@ -1,7 +1,6 @@
 #include "../header/Route.h"
 Route::Route(){    
-    //alloc routeArray;
-    //routeArray = (int*)malloc((WIDTH*HEIGHT+1)*sizeof(int));
+
     routeCounter=0;
     stepInRouteCounter = 0;
 }
@@ -150,12 +149,14 @@ char Route::aStarSearch(int grid[][WIDTH], Pair src, Pair dest)
                == false) {
         printf("Source or the destination is blocked; set anoth destenation\n");
         while(isUnBlocked(grid, dest.first, dest.second)== false){
-            if(dest.first > WIDTH/2)dest.first --;
-            else dest.first ++;
-            if(dest.second > WIDTH/2)dest.second --;
-            else dest.second++;
+             dest.second = routeArray[stepInRouteCounter/2][0];
+             dest.first = routeArray[stepInRouteCounter/2][1];
+            //if(dest.first > WIDTH/2)dest.first --;
+            //else dest.first ++;
+            //if(dest.second > WIDTH/2)dest.second --;
+            //else dest.second++;
         }
-        printf("destination is now available");
+        printf("destination is now available\n");
     }   
  
     // If the destination cell is the same as source cell

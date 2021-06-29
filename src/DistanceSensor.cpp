@@ -15,4 +15,5 @@ void DistanceSensor::ReadDistanceValue(int id){
     std::cout << GetDistance() << std::endl;
     sleep(1);
     i2c.CloseBus();
+   
 }

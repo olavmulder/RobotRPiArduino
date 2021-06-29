@@ -12,6 +12,7 @@
 
 class I2C{
     private:
+    
         int file;
         int data;
     public:

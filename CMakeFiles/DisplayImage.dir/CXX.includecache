@@ -6,12 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/pi/Documents/project_compleet/RobotRPiArduino/header/DistanceSensor.h
-enumVar.h
-/home/pi/Documents/project_compleet/RobotRPiArduino/header/enumVar.h
-I2c.h
-/home/pi/Documents/project_compleet/RobotRPiArduino/header/I2c.h
-
 /home/pi/Documents/project_compleet/RobotRPiArduino/header/I2c.h
 unistd.h
 -
@@ -26,9 +20,37 @@ iostream
 wiringPiI2C.h
 -
 
+/home/pi/Documents/project_compleet/RobotRPiArduino/header/Location.h
+
+/home/pi/Documents/project_compleet/RobotRPiArduino/header/Motor.h
+I2c.h
+/home/pi/Documents/project_compleet/RobotRPiArduino/header/I2c.h
+Location.h
+/home/pi/Documents/project_compleet/RobotRPiArduino/header/Location.h
+enumVar.h
+/home/pi/Documents/project_compleet/RobotRPiArduino/header/enumVar.h
+iostream
+-
+wiringPi.h
+-
+
+/home/pi/Documents/project_compleet/RobotRPiArduino/header/Target.h
+Location.h
+/home/pi/Documents/project_compleet/RobotRPiArduino/header/Location.h
+enumVar.h
+/home/pi/Documents/project_compleet/RobotRPiArduino/header/enumVar.h
+I2c.h
+/home/pi/Documents/project_compleet/RobotRPiArduino/header/I2c.h
+math.h
+-
+stdbool.h
+-
+Motor.h
+/home/pi/Documents/project_compleet/RobotRPiArduino/header/Motor.h
+
 /home/pi/Documents/project_compleet/RobotRPiArduino/header/enumVar.h
 
-/home/pi/Documents/project_compleet/RobotRPiArduino/src/DistanceSensor.cpp
-../header/DistanceSensor.h
-/home/pi/Documents/project_compleet/RobotRPiArduino/header/DistanceSensor.h
+/home/pi/Documents/project_compleet/RobotRPiArduino/src/Target.cpp
+../header/Target.h
+/home/pi/Documents/project_compleet/RobotRPiArduino/header/Target.h
 

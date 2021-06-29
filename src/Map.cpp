@@ -43,10 +43,12 @@ int Map::CalculateTargetLocation(int *id, int x, int y, DirNouse dir, int* offse
     return target.at(*id).CalculateTargetLocation(x,y,dir,arrayDistanceValues[1],TILE_SIZE-3, offset);
 }
 void Map::SetDistanceArray(){
+   
     for(uint8_t i=0;i<3;i++){
         ds.at(i).ReadDistanceValue(i);
         arrayDistanceValues[i]  = ds.at(i).GetDistance();
     }
+    
 }
 
 void Map::SetMap(){
@@ -212,13 +214,7 @@ void Map::SetMap(){
             *(map+(*y*WIDTH)+*x) = TARGET;
         }
     }
-    *map = OPEN;//begin in open
-    /*for(uint8_t i=0;i< HEIGHT;i++){
-        for(uint8_t j=0;j< WIDTH;j++){
-            std::cout << *(map+(i*WIDTH)+j);
-        }
-        std::cout << "\n";
-    }        */
+    *map = OPEN;
 } 
 int* Map::GetMap(){
     return &map[0];
